@@ -71,14 +71,14 @@ id = "UA-212821517-1"
 [languages]
 [languages.en]
 title = "SHM"
-description = "A Docsy example site"
+description = "Billing system with events"
 languageName ="English"
 # Weight used for sorting.
 weight = 1
 
 [languages.ru]
 title = "SHM"
-description = "Docsy er operativsystem for skyen"
+description = "Billing system with events"
 languageName ="Russian"
 contentDir = "content/ru"
 time_format_default = "02.01.2006"
