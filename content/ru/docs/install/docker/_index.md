@@ -17,10 +17,24 @@ https://docs.docker.com/install/
 apt install docker-compose
 ```
 
-### Запустите SHM:
+Активируйте автозапуск:
+```bash
+systemctl enable docker
+```
+
+### Настройка и запуск SHM:
+
+Скачайте файлы `docker-compose.yml` и `.env`
 
 ```bash
 wget https://raw.githubusercontent.com/danuk/shm/master/docker-compose.yml
+wget https://raw.githubusercontent.com/danuk/shm/master/.env
+```
+
+Сгенерируйте пароли для БД и измените их в файле `.env`
+
+Запустите SHM:
+```bash
 docker-compose up -d
 ```
 
