@@ -91,8 +91,9 @@ time_format_blog = "02.01.2006"
   [markup.highlight]
       # See a complete list of available styles at https://xyproto.github.io/splash/docs/all.html
       style = "tango"
+      # style = "monokai"
       # Uncomment if you want your chosen highlight style used for code blocks without a specified language
-      # guessSyntax = "true"
+      guessSyntax = "true"
 
 # Everything below this are Site Params
 
