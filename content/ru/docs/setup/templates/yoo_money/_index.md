@@ -17,7 +17,7 @@ weight: 100
 * `target={{ user.id }}`
 * `account={{ config.pay_systems.yoomoney.account }}`
 
-Пример платежной формы:
+Пример шаблона платежной формы:
 ```html
 <iframe
     src="https://yoomoney.ru/quickpay/shop-widget?writer=seller&targets={{ user.id }}&targets-hint=&default-sum=&button-text=11&payment-type-choice=on&mobile-payment-type-choice=on&hint=&successURL=&quickpay=shop&account={{ config.pay_systems.yoomoney.account }}" width="422" height="224" frameborder="0" allowtransparency="true" scrolling="no">
