@@ -74,6 +74,10 @@ curl -u "admin:admin" http://$SERVER/shm/v1/user
 
 ### Аутентификация через header-ы
 ```go
+curl -H "session-id: 3f928c835ff78f836c4066c112b292c5" http://$SERVER/shm/v1/user
+```
+
+```go
 curl -H "login: admin" -H "password: admin" http://$SERVER/shm/v1/user
 ```
 
