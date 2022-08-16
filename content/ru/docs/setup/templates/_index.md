@@ -29,12 +29,12 @@ weight: 70
 
 Пример шаблона команды:
 ```go
-add_new_vpn.sh --login=vpn_{{ us.id }} --password={{ gen_store_pass() }}
+add_new_vpn.sh --login=vpn_{{ us.id }} --password={{ us.gen_store_pass }}
 ```
 
 В этом примере мы использовали:
 * Идентификатор пользовательской услуги `us.id`
-* специальную функцию `gen_store_pass()`, которая сгенерирует случайный пароль и
+* специальную функцию `us.gen_store_pass`, которая сгенерирует случайный пароль и
 сохранит его в настройках пользовательской услуги (поле `password`).
 
 Таким образом, на сервере будет выполнена такая команда (пример):
@@ -82,4 +82,5 @@ add_new_vpn.sh --login=vpn_1234 --password=abcdefjh
 | us.server.host | Host сервера
 | us.server.transport | Транспорт сервера
 | us.server.settings. | Параметры сервера
+| us.gen_store_pass | Специальная функция для генерации пароля
 
