@@ -27,7 +27,7 @@ weight: 70
 
 Полный список объектов вы можете найти здесь: [Объекты и функции]({{< ref "#объекты-и-функции" >}})
 
-Пример шаблона команды:
+### Пример выполнения shell команды:
 ```go
 add_new_vpn.sh --login=vpn_{{ us.id }} --password={{ us.gen_store_pass }}
 ```
@@ -41,6 +41,16 @@ add_new_vpn.sh --login=vpn_{{ us.id }} --password={{ us.gen_store_pass }}
 ```go
 add_new_vpn.sh --login=vpn_1234 --password=abcdefjh
 ```
+
+### Пример выполнения shell скрипта:
+Иногда удобнее выполнить целый скрипт, многострочный кусок кода. В таких случаях, можно создать отдельный шаблон,
+тогда в качестве команды мы можем указать следующий код:
+```go
+bash <(curl -s -H 'session-id: {{ user.gen_session_id }}' {{ config.api.url }}/shm/v1/template/my_bash_script?format=plain)
+```
+
+Данная команда скачает шаблон с имененем `my_bash_script` на сервер и выполнит его.
+
 
 
 Подробнее о создании и настройке шаблонов можно прочитать [здесь]({{< ref "/docs/api/templates" >}})
@@ -62,6 +72,7 @@ add_new_vpn.sh --login=vpn_1234 --password=abcdefjh
 | user.credit | Кредитный лимит пользователя
 | user.dogovor | Договор пользователя
 | user.full_name | ФИО пользователя
+| user.gen_session_id | Специальная функция для генерации идентификатора сессии
 | [user.pays.forecast]({{< ref "/docs/setup/templates/forecast" >}}) | Возвращает JSON прогноза оплат услуг
 | **us.id** | Идентификатор пользовательской услуги
 | us.name | Имя пользовательской услуги
