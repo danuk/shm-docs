@@ -3,7 +3,7 @@
 title: Шаблоны
 ---
 
-## Пример обновления шаблона `wg_manager`
+### Пример обновления шаблона `wg_manager`
 
 ```bash
 curl -u "admin:admin" \
