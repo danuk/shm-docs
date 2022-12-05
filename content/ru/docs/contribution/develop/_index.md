@@ -14,12 +14,15 @@ title: "Разработка"
 
  1. Установите на свой компьютер: `git`, `docker` и `docker-compose`
  2. Создайте отдельную директорию `shm-dev` и перейдите в неё
- 3. Скачайте `docker-compose.yml` файл для разрабтки: `curl https://raw.githubusercontent.com/danuk/shm/master/contributing/docker-compose.yml`
+ 3. Скачайте `docker-compose.yml` файл для разрабтки:
+    ```bash
+    curl https://raw.githubusercontent.com/danuk/shm/master/contributing/docker-compose.yml
+    ```
  4. Авторизуйтесь (или зарегистрируйтесь) на https://github.com и сделайте Fork для следующих репозиториев (этот шаг можно пропустить, если не планируете делиться вашими наработками):
    - https://github.com/danuk/shm
    - https://github.com/danuk/shm-admin
    - https://github.com/danuk/shm-client
- 5. Выполните следующие команды для клонирования (скачки) основных репозиториев (вместо danuk используйте ваш логин на github, если делали Fork):
+ 5. Выполните следующие команды для клонирования (скачки) основных репозиториев (вместо `danuk` используйте ваш логин на github, если делали Fork):
    - `git clone git@github.com:danuk/shm.git`
    - `git clone git@github.com:danuk/shm-admin.git`
    - `git clone git@github.com:danuk/shm-client.git`
@@ -52,7 +55,9 @@ title: "Разработка"
 
 Если Вы внесли изменения в ядро SHM, то обязательно запустите тесты, чтобы убедиться, что не сломан основной функционал:
 
-`docker exec -it shm-dev-core-1 bash -c 'prove t/*'``
+```bash
+docker exec -it shm-dev-core-1 bash -c 'prove t/*'
+```
 
 ## Делитесь Вашими наработками
 
