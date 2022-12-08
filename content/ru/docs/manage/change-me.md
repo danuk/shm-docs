@@ -1,6 +1,5 @@
 ---
 title: "Обновление SHM"
-linkTitle: "upgrade"
 weight: 100
 description: >-
      Как обновить версию SHM
