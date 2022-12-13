@@ -5,10 +5,10 @@ linkTitle: "Спонсорство"
 ---
 
 Если Вы хотите помочь проекту и поблагодарить разработчика, Вы можете сделать это путем перевода
-денег либо через QR код, либо по ссылке. Спасибо.
+произвольной суммы через QR код, либо по ссылке. Спасибо.
 
-QR-code: ![QR-code](/donation-qr.jpg)
+![QR-code](/donation-qr.jpg)
 
-Ссылка: https://www.tinkoff.ru/rm/firsov.daniil1/yX53F64253
+https://www.tinkoff.ru/rm/firsov.daniil1/yX53F64253
 
 
