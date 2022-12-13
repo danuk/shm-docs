@@ -11,12 +11,12 @@ weight: 20
   "items": [
     {
       "name": "Тариф хостинга",
-      "expired": "2017-01-31 23:59:50",
+      "expire": "2017-01-31 23:59:50",
       "total": 123.45,
     },
     {
       "name": "Регистрация домена в зоне .RU: domain.ru",
-      "expired": "2017-07-29 12:39:46",
+      "expire": "2017-07-29 12:39:46",
       "total": 590,
     }
   ],
@@ -34,7 +34,7 @@ weight: 20
 {{ FOR item IN user.pays.forecast.items }}
 - Услуга: {{ item.name }}
   Стоимость: {{ item.total }}
-  Истекает: {{ item.expired }}
+  Истекает: {{ item.expire }}
 {{ END }}
 
 {{ IF user.pays.forecast.dept }}
