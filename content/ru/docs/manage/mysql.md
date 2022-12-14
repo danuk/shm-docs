@@ -21,7 +21,6 @@ docker exec -i shm_mysql_1 /bin/bash -c 'MYSQL_PWD=${MYSQL_ROOT_PASSWORD} mysql 
 
 mysql_backup.sh
 ```go
-mkdir -p /opt/shm/shm/backups
-cd /opt/shm/shm/backups
-docker exec shm_mysql_1 /bin/bash -c 'MYSQL_PWD=${MYSQL_ROOT_PASSWORD} mysqldump -u root shm' | gzip > shm_$(date +%d%m%Y-%H%M%S).sql.gz
+mkdir -p /opt/shm/backups
+docker exec shm_mysql_1 /bin/bash -c 'MYSQL_PWD=${MYSQL_ROOT_PASSWORD} mysqldump -u root shm' | gzip > /opt/shm/backups/shm_$(date +%d%m%Y-%H%M%S).sql.gz
 ```
