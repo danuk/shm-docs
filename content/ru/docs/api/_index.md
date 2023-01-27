@@ -81,6 +81,12 @@ curl -H "session-id: 3f928c835ff78f836c4066c112b292c5" http://$SERVER/shm/v1/use
 curl -H "login: admin" -H "password: admin" http://$SERVER/shm/v1/user
 ```
 
+### Аутентификация через Query string
+```go
+curl http://$SERVER/shm/v1/user?session_id=3f928c835ff78f836c4066c112b292c5
+```
+
+
 ## Список ресурсов
 | Ресурс                           | URL                             |
 |:---------------------------------|:--------------------------------|
