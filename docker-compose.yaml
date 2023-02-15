@@ -1,12 +1,11 @@
 version: "3.3"
 
 services:
-
   site:
-    image: docsy/docsy-example
-    build:
-      context: .
-    command: server
+    image: klakegg/hugo:ext-alpine
+    command: ["server"]
+    environment:
+      HUGO_ENV: production
     ports:
       - "1313:1313"
     volumes:
