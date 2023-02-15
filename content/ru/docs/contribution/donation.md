@@ -20,7 +20,5 @@ https://www.tinkoff.ru/rm/firsov.daniil1/yX53F64253
 
 Мой публичный адрес для получения USDT: `TYxksdjm3ji7q69ZPDcBLh7X7F7Lgds4m6`
 
-Ссылка для Trust Wallet:
-
-https://link.trustwallet.com/send?coin=195&address=TYxksdjm3ji7q69ZPDcBLh7X7F7Lgds4m6&token_id=TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t
+[Ссылка для Trust Wallet](https://link.trustwallet.com/send?coin=195&address=TYxksdjm3ji7q69ZPDcBLh7X7F7Lgds4m6&token_id=TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t)
 
