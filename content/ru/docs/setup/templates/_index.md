@@ -53,7 +53,8 @@ bash <(curl -s -H 'session-id: {{ user.gen_session.id }}' {{ config.api.url }}/s
 
 
 
-Подробнее о создании и настройке шаблонов можно прочитать [здесь]({{< ref "/docs/api/templates" >}})
+Подробнее о создании и настройке шаблонов можно прочитать [здесь]({{< ref "/docs/api/templates" >}}) 
+и [здесь](http://template-toolkit.org/docs/manual/Syntax.html)
 
 ### Условия и циклы
 В шаблонах поддерживаются условия и циклы.
