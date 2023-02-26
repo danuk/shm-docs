@@ -14,7 +14,7 @@ docker-compose exec mysql /bin/bash -c 'MYSQL_PWD=${MYSQL_ROOT_PASSWORD} mysqldu
 ## Восстановление БД из архива (Restore)
 
 ```go
-docker-compose exec mysql /bin/bash -c 'MYSQL_PWD=${MYSQL_ROOT_PASSWORD} mysql -u root shm' < shm_backup.sql
+docker-compose exec -T mysql /bin/bash -c 'MYSQL_PWD=${MYSQL_ROOT_PASSWORD} mysql -u root shm' < shm_backup.sql
 ```
 
 ## Периодические бэкапы
