@@ -21,7 +21,10 @@ docker-compose exec -T mysql /bin/bash -c 'MYSQL_PWD=${MYSQL_ROOT_PASSWORD} mysq
 
 mysql_backup.sh
 ```go
-mkdir -p /opt/shm/backups
-cd ДИЕКТОРИЯ_ГДЕ_НАХОДИТСЯ_docker_compose.yml
-docker-compose exec mysql /bin/bash -c 'MYSQL_PWD=${MYSQL_ROOT_PASSWORD} mysqldump -u root shm' > /opt/shm/backups/shm_$(date +%d%m%Y-%H%M%S).sql
+DOCKER_COMPOSE_PATH="/opt/shm"
+BACKUP_DIR=/opt/shm/backups
+
+mkdir -p ${BACKUP_DIR}
+cd ${DOCKER_COMPOSE_PATH}
+docker-compose exec -T mysql /bin/bash -c 'MYSQL_PWD=${MYSQL_ROOT_PASSWORD} mysqldump -u root shm' > ${BACKUP_DIR}/shm_$(date +%d%m%Y-%H%M%S).sql
 ```
