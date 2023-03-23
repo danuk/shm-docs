@@ -22,7 +22,7 @@ docker-compose exec -T mysql /bin/bash -c 'MYSQL_PWD=${MYSQL_ROOT_PASSWORD} mysq
 mysql_backup.sh
 ```go
 DOCKER_COMPOSE_PATH="/opt/shm"
-BACKUP_DIR=/opt/shm/backups
+BACKUP_DIR="/opt/shm/backups"
 
 mkdir -p ${BACKUP_DIR}
 cd ${DOCKER_COMPOSE_PATH}
