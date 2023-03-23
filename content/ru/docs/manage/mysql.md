@@ -8,7 +8,7 @@ description: >-
 ## Создание архивной копии (Backup)
 
 ```go
-docker-compose exec mysql /bin/bash -c 'MYSQL_PWD=${MYSQL_ROOT_PASSWORD} mysqldump -u root shm' > shm_backup.sql
+docker-compose exec -T mysql /bin/bash -c 'MYSQL_PWD=${MYSQL_ROOT_PASSWORD} mysqldump -u root shm' > shm_backup.sql
 ```
 
 ## Восстановление БД из архива (Restore)
