@@ -87,6 +87,7 @@ bash <(curl -s -H 'session-id: {{ user.gen_session.id }}' {{ config.api.url }}/s
 | us.service.id | Идентификатор услуги
 | us.service.name | Название услуги
 | us.service.cost | Базовая стоимость услуги
+| us.service.period_cost | Период услуги
 | us.service.category | Категория услуги
 | **us.service.settings** | Параметры услуги
 | us.server.id | Идентификатор сервера
