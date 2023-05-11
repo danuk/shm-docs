@@ -26,7 +26,7 @@ SHM разработан и адаптирован для работы в кон
 
 ### Установите docker:
 
-https://docs.docker.com/install/
+https://docs.docker.com/engine/install/ubuntu/
 
 ### Установите docker-compose:
 
