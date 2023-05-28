@@ -62,7 +62,7 @@ title: "Разработка"
 Если Вы внесли изменения в ядро SHM, то обязательно запустите тесты, чтобы убедиться, что не сломан основной функционал:
 
 ```bash
-docker exec -it shm-dev-core-1 bash -c 'prove t/*'
+docker-compose exec core bash -c 'prove t/*'
 ```
 
 ## Делитесь Вашими наработками
