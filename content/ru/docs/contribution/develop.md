@@ -27,6 +27,12 @@ title: "Разработка"
    - `git clone git@github.com:danuk/shm-admin.git`
    - `git clone git@github.com:danuk/shm-client.git`
 
+## Сборка
+
+Для сборки контейнеров docker используйте следующую команду:
+
+```docker-compose build```
+
 ## Запуск и остановка SHM
 
 > Запуск и остановка SHM осуществляется из директории `shm-dev`
