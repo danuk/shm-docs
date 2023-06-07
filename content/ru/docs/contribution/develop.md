@@ -23,9 +23,9 @@ title: "Разработка"
    - https://github.com/danuk/shm-admin
    - https://github.com/danuk/shm-client
  5. Выполните следующие команды для клонирования (скачки) основных репозиториев (вместо `danuk` используйте ваш логин на github, если делали Fork):
-   - `git clone git@github.com:danuk/shm.git`
-   - `git clone git@github.com:danuk/shm-admin.git`
-   - `git clone git@github.com:danuk/shm-client.git`
+   - `git clone https://github.com/danuk/shm.git`
+   - `git clone https://github.com/danuk/shm-admin.git`
+   - `git clone https://github.com/danuk/shm-client.git`
 
 ## Сборка
 
