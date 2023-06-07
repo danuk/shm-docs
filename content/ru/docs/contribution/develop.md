@@ -16,7 +16,7 @@ title: "Разработка"
  2. Создайте отдельную директорию `shm-dev` и перейдите в неё
  3. Скачайте `docker-compose.yml` файл для разрабтки:
     ```bash
-    curl https://raw.githubusercontent.com/danuk/shm/master/contributing/docker-compose.yml
+    wget https://raw.githubusercontent.com/danuk/shm/master/contributing/docker-compose.yml
     ```
  4. Авторизуйтесь (или зарегистрируйтесь) на https://github.com и сделайте Fork для следующих репозиториев (этот шаг можно пропустить, если не планируете делиться вашими наработками):
    - https://github.com/danuk/shm
