@@ -1,6 +1,7 @@
 
 ---
 title: "Telegram"
+weight: 40
 ---
 
 Telegram - популярный мессенджер (https://telegram.org/)
