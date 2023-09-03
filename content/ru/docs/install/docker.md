@@ -26,17 +26,8 @@ SHM разработан и адаптирован для работы в кон
 
 ### Установите docker:
 
-https://docs.docker.com/engine/install/ubuntu/
-
-### Установите docker-compose:
-
 ```bash
-apt install docker-compose
-```
-
-Активируйте автозапуск:
-```bash
-systemctl enable docker
+  curl -sL https://get.docker.com | bash
 ```
 
 ### Настройка и запуск SHM:
@@ -54,7 +45,7 @@ wget https://raw.githubusercontent.com/danuk/shm/master/.env
 
 Запустите SHM:
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 ### SHM будет доступен по адресу:
