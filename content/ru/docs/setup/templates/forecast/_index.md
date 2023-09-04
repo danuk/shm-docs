@@ -34,7 +34,7 @@ weight: 20
 {{ FOR item IN user.pays.forecast.items }}
 - Услуга: {{ item.name }}
   Стоимость: {{ item.total }}
-  Истекает: {{ item.expire }}
+  {{ IF item.expire }} Истекает: {{ item.expire }}{{ END }}
 {{ END }}
 
 {{ IF user.pays.forecast.dept }}
