@@ -68,4 +68,10 @@ SHM управляет ключами Marzban используя API. Для а�
 
 >> В Telegram bot используйте `args.0` вместо `us.id`.
 
+## Telegram bot
+
+[Настройте]({{<ref "/docs/setup/servers/transport/telegram" >}}) Telegram bot, если хотите продавать услуги через Telegram.
+
+Вы можете использовать готовый шаблон для Telegram. Для этого, создайте шаблон `telegram` и поместите туда [код](https://raw.githubusercontent.com/danuk/shm-templates/main/telegram_bot/vpn/telegram-vpn-by-category.tmpl).
+
 
