@@ -96,7 +96,7 @@ bash <(curl -s -H 'session-id: {{ user.gen_session.id }}' {{ config.api.url }}/s
 | us.server.transport | Транспорт сервера
 | us.server.settings. | Параметры сервера
 | us.gen_store_pass | Специальная функция для генерации пароля
-| toJson() | Функция преобразозования объекта в JSON 
+| toJson() | Функция преобразования объекта в JSON 
 | toQueryString() | Функция преобразования объектов в Query string 
 
 
