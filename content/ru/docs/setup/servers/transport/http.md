@@ -62,4 +62,21 @@ curl https://api.telegram.org/bot2836119681:AAEyvDasDFC-Y98xmYOhLni8p2bhshjkhio/
     -d '{"chat_id":1234567890,"text":"test message"}'
 ```
 
+### Формирование QueryString для GET запросов
+
+Используйте ф-ию `toQueryString()` для формирования аргументов для GET запросов.
+
+Пример:
+```
+{{
+  toQueryString(
+    A = 1
+    text = "test message"
+    qaz = "Привет Мир "
+  )
+}} 
+```
+
+Вернет строку вида: `text=test%20message&A=1&qaz=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%9C%D0%B8%D1%80%20`, которая 
+будет автоматически добавлена к URI.
 
