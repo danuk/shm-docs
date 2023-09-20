@@ -35,8 +35,8 @@ SHM разработан и адаптирован для работы в кон
 Скачайте файлы `docker-compose.yml` и `.env`
 
 ```bash
-wget --inet4-only https://raw.githubusercontent.com/danuk/shm/master/docker-compose.yml
-wget --inet4-only https://raw.githubusercontent.com/danuk/shm/master/.env
+curl -sO https://raw.githubusercontent.com/danuk/shm/master/docker-compose.yml
+curl -sO https://raw.githubusercontent.com/danuk/shm/master/.env
 ```
 
 Сгенерируйте пароли для БД и измените их в файле `.env`
