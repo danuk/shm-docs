@@ -50,5 +50,5 @@ title: ЮKassa
 ```
 
 * Если используете Telegram bot, то можете использовать ссылку для оплаты вида:
-`https://{{ config.api.url }}/shm/pay_systems/yookassa.cgi?user_id={{ user.id }}&action=create&amount={{ user.pays.forecast.total }}&message_id={{ message.message_id + 1 }}`
+`{{ config.api.url }}/shm/pay_systems/yookassa.cgi?user_id={{ user.id }}&action=create&amount={{ user.pays.forecast.total }}&message_id={{ message.message_id + 1 }}`
 
