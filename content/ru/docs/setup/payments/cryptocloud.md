@@ -47,4 +47,6 @@ title: CryptoCloud.plus
 </form>
 ```
 
+* Если используете Telegram bot, то можете использовать ссылку для оплаты вида:
+`{{ config.api.url }}/shm/pay_systems/cryptocloud.cgi?user_id={{ user.id }}&action=create&amount={{ user.pays.forecast.total }}&message_id={{ message.message_id + 1 }}`
 
