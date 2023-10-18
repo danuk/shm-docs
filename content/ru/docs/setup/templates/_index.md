@@ -61,7 +61,7 @@ bash <(curl -s -H 'session-id: {{ user.gen_session.id }}' {{ config.api.url }}/s
 
 Примеры использования условий и циклов вы можете увидеть в примерах шаблонов, например здесь: [Прогноз оплаты]({{< ref "/docs/setup/templates/forecast" >}})
 
-Больше информации об условиях и циклах Вы можете узнать [здесь](http://www.template-toolkit.org/docs/manual/Directives.html#section_Conditional_Processing)
+> Больше информации об условиях и циклах Вы можете узнать [здесь](http://www.template-toolkit.org/docs/manual/Directives.html#section_Conditional_Processing)
 
 ### Объекты и функции
 
