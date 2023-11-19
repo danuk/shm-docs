@@ -95,6 +95,9 @@ bash <(curl -s -H 'session-id: {{ user.gen_session.id }}' {{ config.api.url }}/s
 | us.server.host | Host сервера
 | us.server.transport | Транспорт сервера
 | us.server.settings. | Параметры сервера
+| us.withdraws. | Ссылка на объект списания средств
+| us.withdraws.total | Сумма списания за услугу
+| us.withdraws.cost | Стоимость услуги
 | us.gen_store_pass | Специальная функция для генерации пароля
 | toJson() | Функция преобразования объекта в JSON 
 | toQueryString() | Функция преобразования объектов в Query string 
