@@ -1,7 +1,7 @@
 
 ---
 title: Marzban
-weight: 500
+weight: 20
 ---
 
 В данном разделе описывается процесс интеграции SHM и Marzban.

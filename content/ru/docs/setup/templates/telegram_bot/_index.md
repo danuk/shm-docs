@@ -2,11 +2,11 @@
 ---
 title: "Telegram bot"
 weight: 200
+toc_hide: true
+hide_summary: false
 ---
 
-## Введение
-
-Этот шаблон используется для Telegram Bot.
+## Шаблон для Telegram Bot-а
 
 Это двух-уровневый шаблон. Сначала используются теги `<% ... %>` для нахождения
 нужной секции шаблона, соответствующей команды. После нахождения нужной секции
@@ -30,8 +30,10 @@ weight: 200
 <% SWITCH cmd %>
 <% CASE 'USER_NOT_FOUND' %>
 {
-    "sendMessage": {
-        "text": "Для работы с Telegram ботом укажите Telegram логин в профиле личного кабинета"
+    "shmRegister": {
+        "partner_id": "{{ args.0 }}",
+        "callback_data": "/menu",
+        "error": "ОШИБКА"
     }
 }
 <% CASE ['/start', '/menu'] %>
@@ -71,41 +73,45 @@ weight: 200
 }
 ```
 
-## Стандартные методы
+### Стандартные методы Telegram
 
-- sendMessage - https://core.telegram.org/bots/api#sendmessage
-- sendPhoto - https://core.telegram.org/bots/api#sendphoto
-- sendAudio - https://core.telegram.org/bots/api#sendaudio
-- sendDocument - https://core.telegram.org/bots/api#senddocument
-- sendVideo - https://core.telegram.org/bots/api#sendvideo
-- sendAnimation - https://core.telegram.org/bots/api#sendanimation
-- sendVoice - https://core.telegram.org/bots/api#sendvoice
-- sendVideoNote - https://core.telegram.org/bots/api#sendvideonote
-- sendMediaGroup - https://core.telegram.org/bots/api#sendmediagroup
-- sendLocation - https://core.telegram.org/bots/api#sendlocation
-- sendVenue - https://core.telegram.org/bots/api#sendvenue
-- sendContact - https://core.telegram.org/bots/api#sendcontact
-- sendPoll - https://core.telegram.org/bots/api#sendpoll
-- sendDice - https://core.telegram.org/bots/api#senddice
-- sendChatAction - https://core.telegram.org/bots/api#sendchataction
-- deleteMessage - https://core.telegram.org/bots/api#deletemessage
+В SHM можно использовать любые методы Telegram.
 
-`chat_id` - заполняется автоматически
+Полный перечень доступных методов и синтаксис их использования
+можно посмотреть на официальном сайте документации Telegram https://core.telegram.org/bots/api#available-methods
 
-## Встроенные переменные SHM
-- `cmd` - Команда от бота или пользователя. В обычном случае это первое слово до пробела. Если команда начинается со знака `|`, то команда будет сохранена целиком.
-- `message` - сообщение от Telegram
-- `args` - массив аргументов, переданный в `callback_data`. Разделитель - пробел.
+> `chat_id` - заполняется автоматически, но при необходимости его можно указать
 
-## Встроенные методы SHM
+### Встроенные переменные SHM
 
+- `cmd` - специальная переменная SHM в которую записывается значение, полученное из Telegram, в зависимости от типа:
+`message.text` для команд введеных пользователем, и `callback_query.data` для `callback_data`. Если команда пользователя начинается
+с символа `/`, то такая команда будет усечена до первого слова.
+- `args` - массив аргументов команды, разделитель - пробел.
+- `message` - полное сообщение от Telegram (json объект)
+
+#### Примеры парсинга `cmd` и `args`:
+| Источник      | Команда      | cmd        | args    |
+|:--------------|--------------|------------|---------|
+| Пользователь  | /test 1 2 3  | /test      | [1,2,3] |
+| Пользователь  | test 1 2 3   | test 1 2 3 | [1,2,3] |
+| callback_data | /test 1 2 3  | /test      | [1,2,3] |
+| callback_data | test 1 2 3   | test       | [1,2,3] |
+
+> `args` - это массив. Для получения значений из него используйте синтаксис: `args.N`, где `N` - индекс элемента.
+Например, получить первый элемент массива можно так: `args.0`
+
+
+### Встроенные методы SHM
 - `shmRegister` - метод позволяет зарегистрировать нового клиента
   ```go
   "shmRegister": {
       "callback_data": "/menu",
-      "error": "ОШИБКА: Логин {{ message.chat.username }} или chat_id {{ message.chat.id }} уже существует"
+      "error": "ОШИБКА",
+      "partner_id": 123
   }
   ```
+   где: `partner_id` - ID партнера, для реферальной программы (опционально).
 
 - `shmServiceOrder` - метод для регистрации новых услуг. Пример использования:
   ```go
@@ -131,18 +137,35 @@ weight: 200
 - `uploadDocumentFromStorage` - метод загружает данные из Storage и отправляет их в виде файла
   ```go
   "uploadDocumentFromStorage": {
-      "name": "vpn{{ args.0 }}",
-      "filename": "vpn{{ args.0 }}.conf"
+      "name": "{{ args.0 }}",
+      "filename": "{{ args.0 }}.conf"
   }
   ```
 
 - `uploadPhotoFromStorage` - метод загружает данные из Storage и отправляет их в виде картинки (QR code)
   ```go
   "uploadPhotoFromStorage": {
-      "name": "vpn{{ args.0 }}",
+      "name": "{{ args.0 }}",
       "format": "qr_code_png"
   }
   ```
+
+## Авторизация пользователей
+
+SHM автоматически авторизует пользователя.
+Для связки пользователя SHM и пользователя Telegram используется `user_id` из Telegram.
+
+#### Для отправки сообщений пользователю в Telegram необходимо знать:
+- user_id - идентификатор пользователя Telegram
+- chat_id - идентификатор чата Telegram
+
+Если пользователь хоть раз взаимодействовал с ботом, подключенным к SHM, то его `user_id` и `chat_id` автоматически сохраняются в `settings` пользователя.
+
+#### `chat_id` определяется в следующем порядке:
+- Из сообщения Telegram (в случае, если клиент отправил команду боту)
+- Из `settings` шаблона (`telegram.chat_id`)
+- Из `settings` пользователя SHM (`telegram.chat_id`)
+
 
 ## Отправка системных сообщений
 
@@ -163,7 +186,7 @@ weight: 200
 Пользователь: {{ user.login }} ({{ user.id }})
 
 {{ IF us.id }}
-Услуга: [{{ us.id }}]  {{ us.name }}
+Услуга: [{{ us.id }}] {{ us.name }}
 {{ END }}
 
 {{ IF event_name == "PAYMENT" }}
