@@ -126,3 +126,18 @@ Service id: 111, Name: Web хостинг, Cost: 0
 Service id: 110, Name: Тариф X-MAX, Cost: 300
 Service id: 5, Name: Web хостинг LITE, Cost: 0
 ```
+
+### Сортировка результатов
+
+Для сортировки используете функции: `sort` (для алфавитной сортировки), `nsort` (для числовой сортировки) и `reverse` (обратный порядок данных).
+
+#### Пример сортировки по полю `category`:
+```go
+{{ arr = ref(service.list_for_api().sort('cateogry')) }}
+```
+
+#### Пример сортировки по полю `cost`, в убывающем порядке:
+```go
+{{ arr = ref(service.list_for_api().nsort('cost').reverse) }}
+```
+
