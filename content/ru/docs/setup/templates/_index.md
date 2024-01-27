@@ -55,6 +55,7 @@ weight: 70
 | user.settings | Получить settings пользователя
 | user.set_settings({ 'foo' => 1 }) | Сохранить в `settings` пользователя произвольные данные
 | user.gen_session.id | Специальная функция для генерации идентификатора сессии
+| user.set_new_passwd | Смена пароля пользователя. Вернет новый пароль
 | user.pays. | [Ссылка]({{< ref "#платежи" >}}) на платежи пользователя
 | user.delete | Удаление пользователя (с нулевым балансом, без услуг)
 | user.list_for_api( 'admin', 1) | Получить всех пользователей
@@ -110,6 +111,7 @@ weight: 70
 | pay.comment | Данные платежа
 | pay.last | Получить ссылку на последний платеж
 | [pay.forecast]({{< ref "/docs/setup/templates/notifications/forecast" >}}) | Возвращает JSON прогноза оплат услуг
+| pay.paysystems | Получить список платежных систем
 | pay.list_for_api() | Получение списка платежей
 
 ### Списания
