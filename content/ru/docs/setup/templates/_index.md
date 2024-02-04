@@ -111,7 +111,7 @@ weight: 70
 | pay.comment | Данные платежа
 | pay.last | Получить ссылку на последний платеж
 | [pay.forecast]({{< ref "/docs/setup/templates/notifications/forecast" >}}) | Возвращает JSON прогноза оплат услуг
-| pay.paysystems | Получить список платежных систем
+| [pay.paysystems]({{< ref "paysystems" >}}) | Получить список платежных систем
 | pay.list_for_api() | Получение списка платежей
 
 ### Списания
