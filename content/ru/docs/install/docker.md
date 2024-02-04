@@ -35,7 +35,7 @@ SHM разработан и адаптирован для работы в кон
 Создайте рабочую директорию SHM на сервере и перейдите в нее:
 
 ```bash
-sudo mkdir -p /opt/shm/ && cd /opt/shm
+mkdir -p /opt/shm/ && cd /opt/shm
 ```
 
 Скачайте файлы `docker-compose.yml` и `.env`
