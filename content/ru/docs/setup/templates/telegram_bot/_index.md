@@ -150,6 +150,36 @@ hide_summary: false
   }
   ```
 
+## Приём платежей
+
+Для приёма платежей в Telegram удобно использовать дополнительный шаблон ([web_app](https://core.telegram.org/bots/webapps)).
+
+Шаблон используется для возможности ввода произвольной суммы и выбора настроенных платежных систем SHM.
+
+1. [Настройте]({{< ref "/docs/setup/payments" >}}) одну или несколько платежных систем
+2. [Скачайте шаблон](https://raw.githubusercontent.com/danuk/shm-templates/main/telegram_bot/tg_payments.tmpl) и сохраните в SHM под названием `tg_payments`
+3. В Шаблоне своего бота используйте конструкцию вида:
+```go
+<% CASE '/payment' %>
+{
+  "sendMessage": {
+    "text": "Оплата покупки",
+    "reply_markup": {
+      "inline_keyboard": [
+        [
+          {
+            "text": "Оплатить...",
+            "web_app": {
+              "url": "{{ config.api.url }}/shm/v1/template/tg_payments?format=html&session_id={{ user.gen_session.id }}"
+            }
+          }
+        ]
+      ]
+    }
+  }
+}
+```
+
 ## Авторизация пользователей
 
 SHM автоматически авторизует пользователя.
