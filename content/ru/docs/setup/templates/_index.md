@@ -187,6 +187,7 @@ weight: 70
 ### Вспомогательные ф-ии
 | Метод | Описание |
 |:------|----------|
+| params | Аргументы вызова шаблона (http query string)
 | event_name | Переменная содержит название текущего события
 | [toJson()]({{< ref "functions/#tojson" >}}) | Функция преобразования объекта в JSON
 | [toQueryString()]({{< ref "functions/#toquerystring" >}}) | Функция преобразования объектов в Query string
