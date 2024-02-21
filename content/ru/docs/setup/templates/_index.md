@@ -53,7 +53,7 @@ weight: 70
 | user.dogovor | Договор пользователя
 | user.full_name | ФИО пользователя
 | user.settings | Получить settings пользователя
-| user.set_settings({ 'foo' => 1 }) | Сохранить в `settings` пользователя произвольные данные
+| user.set_settings({ "foo" => 1 }) | Сохранить в `settings` пользователя произвольные данные
 | user.gen_session.id | Специальная функция для генерации идентификатора сессии
 | user.set_new_passwd | Смена пароля пользователя. Вернет новый пароль
 | user.pays. | [Ссылка]({{< ref "#платежи" >}}) на платежи пользователя
@@ -69,7 +69,7 @@ weight: 70
 | us.expire | Дата истечения пользовательской услуги
 | us.status | Статус пользовательской услуги
 | us.settings | Получить параметры пользовательской услуги
-| us.set_settings({ 'foo' => 1 }) | Сохранить в `settings` услуги пользователя произвольные данные
+| us.set_settings({ "foo" => 1 }) | Сохранить в `settings` услуги пользователя произвольные данные
 | us.set(FIELD, VALUE) | Установка поля FIELD в значение VALUE. Пример: `us.set('next', 123)`
 | us.child_by_category(CATEGORY). | Ссылка на дочернюю услугу определенной категории
 | us.finish('money_back', 1) | Завершение услуги с возвратом средств (биллинг продлит или заблокирует услугу в зависимости от наличия средств)
@@ -96,7 +96,7 @@ weight: 70
 | service.id( N ). | Получение произвольного поля услуги c идентификатором N
 | service.api_price_list() | Возвращает массив услуг из каталога
 | service.settings | Получить `settings` услуги
-| service.set_settings({ 'foo' => 1 }) | Сохранить в `settings` услуги произвольные данные
+| service.set_settings({ "foo" => 1 }) | Сохранить в `settings` услуги произвольные данные
 | service.withdraw. | [Ссылка]({{< ref "#списания" >}}) на объект списания
 | service.create_for_api( service_id, N ) | Регистрирует услугу клиенту с идентификатором N
 | service.list_for_api() | Получение списка услуг из каталога
@@ -138,7 +138,7 @@ weight: 70
 | server.host | Host сервера
 | server.transport | Транспорт сервера
 | server.settings | Получение settings текущего сервера
-| server.set_settings({ 'foo' => 1 }) | Сохранить в `settings` сервера произвольные данные
+| server.set_settings({ "foo" => 1 }) | Сохранить в `settings` сервера произвольные данные
 | server.group. | [Ссылка]({{< ref "#группы-серверов" >}}) на группу сервера
 | server.servers_by_group_id( N ) | Получение списка серверов из группы N
 | server.list_for_api() | Получение списка серверов
@@ -151,7 +151,7 @@ weight: 70
 | sg.type | Способ выбора серверов (random,by-one,evenly)
 | sg.transport | Транспорт группы (local,ssh,http...)
 | sg.settings | settings группы серверов
-| sg.set_settings({ 'foo' => 1 }) | Сохранить в `settings` группы серверов произвольные данные
+| sg.set_settings({ "foo" => 1 }) | Сохранить в `settings` группы серверов произвольные данные
 | sg.list_for_api() | Получение списка групп серверов
 
 ### Шаблоны
