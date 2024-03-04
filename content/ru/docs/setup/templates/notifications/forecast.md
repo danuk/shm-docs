@@ -34,19 +34,33 @@ SHM имеет встроенный модуль `forecast`, позволяющ�
 ```go
 {
   "items": [
-    {
-      "name": "Тариф хостинга",
-      "expire": "2017-01-31 23:59:50",
-      "total": 123.45,
-    },
-    {
-      "name": "Регистрация домена в зоне .RU: domain.ru",
-      "expire": "2017-07-29 12:39:46",
-      "total": 590,
-    }
-  ],
-  "dept": 21.56,
-  "total": 713.45
+        {
+            "name": "Регистрация домена в зоне .RU",
+            "service_id": 11,
+            "user_service_id": 2949,
+            "usi": 2949,
+            "cost": 590,
+            "discount": 0,
+            "months": 12,
+            "qnt": 1,
+            "total": 590,
+            "expire": "2017-07-29 12:39:46",
+            "status": "ACTIVE",
+            "next": {
+                "name": "Продление домена в зоне .RU",
+                "service_id": 12,
+                "cost": 890,
+                "discount": 0,
+                "months": 12,
+                "qnt": 1,
+                "total": 890
+            }
+        }
+    ],
+    "balance": -21.56,
+    "bonuses": 100,
+    "dept": 21.56,
+    "total": 768.44
 }
 ```
 
@@ -58,10 +72,19 @@ SHM имеет встроенный модуль `forecast`, позволяющ�
 
 {{ FOR item IN user.pays.forecast.items }}
 - Услуга: {{ item.name }}
-  Стоимость: {{ item.total }}
   {{ IF item.expire }}
   Истекает: {{ item.expire }}
+  {{ IF item.service_id != item.next.service_id }}
+  Следующая услуга: {{ item.next.name }}
+  Стоимость: {{ item.next.total }}
+  {{ ELSE }}
+  Стоимость продления: {{ item.next.total }}
   {{ END }}
+
+  {{ ELSE }}
+  Стоимость: {{ item.total }}
+  {{ END }}
+
 {{ END }}
 
 {{ IF user.pays.forecast.dept }}
