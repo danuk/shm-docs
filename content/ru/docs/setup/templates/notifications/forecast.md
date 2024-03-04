@@ -70,7 +70,7 @@ SHM имеет встроенный модуль `forecast`, позволяющ�
 
 Уведомляем Вас о сроках действия услуг:
 
-{{ FOR item IN user.pays.forecast.items }}
+{{ FOR item IN ref(user.pays.forecast.items) }}
 - Услуга: {{ item.name }}
   {{ IF item.expire }}
   Истекает: {{ item.expire }}
