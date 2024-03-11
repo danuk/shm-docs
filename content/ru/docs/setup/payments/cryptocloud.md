@@ -19,7 +19,6 @@ weight: 100
       "name": "CryptoCloud"
       "api_key":"API_KEY"
       "shop_id":"Идентификтор магазина"
-      "template_id": "crypto-cloud-plus"
       "show_for_client": true
     }
   }
