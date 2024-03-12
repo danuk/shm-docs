@@ -1,7 +1,7 @@
 
 ---
 title: "Удаление услуг при блокировке"
-weight: 20
+weight: 30
 toc_hide: false
 hide_summary: false
 ---

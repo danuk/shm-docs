@@ -1,7 +1,7 @@
 
 ---
 title: "Подсчет доходов за месяц"
-weight: 20
+weight: 10
 toc_hide: false
 hide_summary: false
 ---
