@@ -17,6 +17,7 @@ hide_summary: false
 ```go
 {{ arr = ref(user.services.list_for_api( 'admin',1, 'limit',0, 'filter',{} )) }}
 {{ FOR item IN arr }}
+{{ user = user.switch( item.user_id ) }}
 {{ us.id( item.user_service_id ).set('next', item.service_id) }}
 {{ END }}
 ```
@@ -28,6 +29,7 @@ hide_summary: false
 ```go
 {{ arr = ref(user.services.list_for_api( 'admin',1, 'limit',0, 'filter',{ 'service_id' => 5 } )) }}
 {{ FOR item IN arr }}
+{{ user = user.switch( item.user_id ) }}
 {{ us.id( item.user_service_id ).set('next', 6) }}
 {{ END }}
 ```

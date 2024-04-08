@@ -54,6 +54,7 @@ weight: 70
 | user.full_name | ФИО пользователя
 | user.settings | Получить settings пользователя
 | user.set_settings({ &apos;foo&apos; => 1 }) | Сохранить в `settings` пользователя произвольные данные
+| user.services | [Ссылка]({{< ref "##услуги-пользователя" >}}) на услуги пользователя
 | user.gen_session.id | Специальная функция для генерации идентификатора сессии
 | user.set_new_passwd | Смена пароля пользователя. Вернет новый пароль
 | user.pays. | [Ссылка]({{< ref "#платежи" >}}) на платежи пользователя
@@ -98,7 +99,7 @@ weight: 70
 | service.settings | Получить `settings` услуги
 | service.set_settings({  &apos;foo&apos; => 1 }) | Сохранить в `settings` услуги произвольные данные
 | service.withdraw. | [Ссылка]({{< ref "#списания" >}}) на объект списания
-| service.create_for_api( service_id, N ) | Регистрирует услугу клиенту с идентификатором N
+| service.create_for_api( &apos;service_id&apos;, N ) | Регистрирует услугу клиенту с идентификатором N
 | service.list_for_api() | Получение списка услуг из каталога
 
 ### Платежи
