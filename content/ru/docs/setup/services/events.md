@@ -6,7 +6,6 @@ title: "События"
 
 Событие происходит между переходом услуги пользователя из одного статуса в другой.
 
-
 ## Список cобытий
 
 | Event             | Статус ДО | Статус ПОСЛЕ |  Описание                                                         |
@@ -22,11 +21,52 @@ title: "События"
 Если для события настроена команда, то пользовательской услуге будет присвоен промежуточный статус: `PROGRESS`,
 а после выполнения команды пользовательской услуге будет присвоен результирующий статус.
 
-Вот так будет выглядеть создание услуги с настроеным событием:
+### Схема создания новой услуги:
 
-`INIT -> PROGRESS (выполнение команды) -> ACTIVE`
+```mermaid
+flowchart LR
+    classDef white fill:white
+    classDef green fill:green,color:#fff
+    classDef red fill:red,color:#fff
+    classDef gray fill:gray,color:#fff
+    classDef yellow fill:yellow
 
+    A[[INIT\nсоздание услуги]]:::white --> B{Оплата}
+    B -- Оплата не прошла --> E[[NOT_PAID]]:::yellow --> CH{{CHANGED}}
+    B -- Оплачена --> C{{CREATE}}
+    C -->|События нет| TS
+    C -->|Событие есть|TC[[PROGRESS\nвыполняем событие]]:::gray
+    TC -- Успех --> TS[[ACTIVE]]:::green --> CH
+    TC -- Ошибка --> TSS[[STUCK]]:::red
+```
+
+### Схема продления услуги:
+
+```mermaid
+flowchart LR
+    classDef green fill:green,color:#fff
+    classDef red fill:red,color:#fff
+    A[[ACTIVE]]:::green -->|продление| B{Оплата}
+    B -- Оплата не прошла --> E[[BLOCK]]:::red --> CH{{CHANGED}}
+    B -- Оплачена --> C[[ACTIVE]]:::green --> D{{PROLONGATE}}
+```
 > событие PROLONGATE не переводит услугу в статус PROGRESS, и событие CHANGED не вызывается
+
+### Схема разблокировки услуги:
+```mermaid
+flowchart LR
+    classDef green fill:green,color:#fff
+    classDef red fill:red,color:#fff
+    classDef gray fill:gray,color:#fff
+
+    A[[BLOCK]]:::red --> B{Оплата}
+    B -- Оплата не прошла --> E[[BLOCK]]:::red
+    B -- Оплачена --> C{{ACTIVATE}}
+    C -->|События нет| TS
+    C -->|Событие есть|TC[[PROGRESS\nвыполняем событие]]:::gray
+    TC -- Успех --> TS[[ACTIVE]]:::green --> CH{{CHANGED}}
+    TC -- Ошибка --> TSS[[STUCK]]:::red
+```
 
 ## Настройка событий
 

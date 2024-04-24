@@ -12,6 +12,11 @@ Telegram - популярный мессенджер (https://telegram.org/)
 
 ## Telegram уведомления
 
+```mermaid
+flowchart LR
+    A([SHM]) --> B(Событие) -->С(Шаблон) --> D(Telegram API) --> E(Telegram client)
+```
+
 Для того, чтобы SHM мог отправлять сообщения Вашим пользователям, необходимо:
 1. Создать Telegram Bot-а, с помощью бота @BotFather (https://telegram.me/BotFather)
 2. В админке, в "Настройки" -> "Конфигурация", необходимо сохранить Telegram Token, полученный на предыдущем шаге
@@ -23,6 +28,10 @@ Telegram - популярный мессенджер (https://telegram.org/)
 
 ## Telegram bot
 
+```mermaid
+flowchart LR
+    A(Telegram client) <--> B(Telegram API) <--> С([SHM\ntelegram_bot])
+```
 Для работы полноценного бота нужно:
 - Выполнить шаги 1 и 2 из предыдущего раздела (Telegram уведомления), если еще не выполнены.
 - Настроить Telegram API, сообщить ему адрес, куда отправлять запросы от клиента (от бота). Для этого [скачайте](https://raw.githubusercontent.com/danuk/shm/master/scripts/telegram/setWebhook.sh) bash скрипт.
