@@ -23,7 +23,7 @@ Marzban удобен в использовании, многофункциона
 flowchart LR
     subgraph SHM
         E[Событие] --> TPL(Шаблон)
-        API --> DB
+        API --> DB[(Хранилище\nключей)]
     end
     subgraph Marzban
         MZ(API)
