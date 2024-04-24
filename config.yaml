@@ -1,0 +1,113 @@
+baseURL: https://docs.myshm.ru
+title: SHM
+enableRobotsTXT: true
+theme:
+  - docsy
+enableGitInfo: true
+contentDir: content/en
+defaultContentLanguage: ru
+defaultContentLanguageInSubdir: false
+enableMissingTranslationPlaceholders: true
+algolia:
+  index: myshm
+  key: "60ffd447d44aaf1994e776dec1c4de13"
+  appID: "9T74T53DFM"
+taxonomies:
+  tag: tags
+  category: categories
+params:
+  mermaid:
+    enable: true
+  taxonomy:
+    taxonomyCloud:
+      - tags
+      - categories
+    taxonomyCloudTitle:
+      - Tag Cloud
+      - Categories
+    taxonomyPageHeader:
+      - tags
+      - categories
+    pygmentsCodeFences: true
+    pygmentsUseClasses: false
+    pygmentsUseClassic: false
+    pygmentsStyle: tango
+  copyright: SHM
+  version_menu: Releases
+  archived_version: false
+  version: "0.1"
+  url_latest_version: https://docs.myshm.ru
+  github_repo: https://github.com/danuk/shm-docs
+  github_project_repo: https://github.com/danuk/shm
+  github_branch: master
+  algolia_docsearch: true
+  offlineSearch: false
+  prism_syntax_highlighting: true
+  ui:
+    breadcrumb_disable: false
+    footer_about_disable: false
+    navbar_logo: true
+    navbar_translucent_over_cover_disable: false
+    sidebar_menu_compact: false
+    sidebar_search_disable: false
+    feedback:
+      enable: false
+      yes: Glad to hear it! Please <a
+        href="https://github.com/USERNAME/REPOSITORY/issues/new">tell us how we
+        can improve</a>.
+      no: Sorry to hear that. Please <a
+        href="https://github.com/USERNAME/REPOSITORY/issues/new">tell us how we
+        can improve</a>.
+    readingtime:
+      enable: false
+  links:
+    user:
+      - name: User mailing list
+        url: https://example.org/mail
+        icon: fa fa-envelope
+        desc: Discussion and help from your fellow users
+    developer:
+      - name: GitHub
+        url: https://github.com/danuk/shm
+        icon: fab fa-github
+        desc: Development takes place here!
+      - name: Developer mailing list
+        url: https://example.org/mail
+        icon: fa fa-envelope
+        desc: Discuss development issues around the project
+permalinks:
+  blog: /:section/:year/:month/:day/:slug/
+blackfriday:
+  plainIDAnchors: true
+  hrefTargetBlank: true
+  angledQuotes: false
+  latexDashes: true
+imaging:
+  resampleFilter: CatmullRom
+  quality: 75
+  anchor: smart
+services:
+  googleAnalytics:
+    id: UA-212821517-1
+languages:
+  ru:
+    title: SHM
+    languageName: Russian
+    contentDir: content/ru
+    params:
+      description: Billing system with events
+      time_format_default: 02.01.2006
+      time_format_blog: 02.01.2006
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    style: tango
+    guessSyntax: "false" # it's needs for mermaid working
+outputs:
+  section:
+    - HTML
+    - print
+    - RSS
+
