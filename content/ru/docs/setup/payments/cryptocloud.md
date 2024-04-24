@@ -2,6 +2,8 @@
 ---
 title: CryptoCloud.plus
 weight: 100
+toc_hide: true
+hide_summary: true
 ---
 
 Сервис позволяет принимать крипто-валюту от ваших клиентов.
