@@ -54,6 +54,8 @@ weight: 70
 | user.dogovor | Договор пользователя
 | user.full_name | ФИО пользователя
 | user.settings | Получить settings пользователя
+| user.get_bonus | Получить кол-во бонусов
+| user.add_bonus( КОЛ-ВО, КОММЕНТ ) | Начисление бонусов
 | user.set_settings({ &apos;foo&apos; => 1 }) | Сохранить в `settings` пользователя произвольные данные
 | user.services | [Ссылка]({{< ref "##услуги-пользователя" >}}) на услуги пользователя
 | user.gen_session.id | Специальная функция для генерации идентификатора сессии
