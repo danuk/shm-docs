@@ -117,12 +117,13 @@ hide_summary: false
   ```go
   "shmServiceOrder": {
       "service_id": "{{ args.0 }}",
+      "parent": 123,
       "callback_data": "/menu",
       "cb_not_enough_money": "/pay",
       "error": "ОШИБКА"
    }
    ```
-   где: `service_id` - ID услуги, `callback_data` - команда для случая успешного заказа услуги, `cb_not_enough_money` - команда для случая нехватки средств для активации услуги.
+   где: `service_id` - ID услуги, `parent` - ID родительской услуги (опционально), `callback_data` - команда для случая успешного заказа услуги, `cb_not_enough_money` - команда для случая нехватки средств для активации услуги.
 
 - `shmServiceDelete` - метод для удаления услуг пользователя. Пример использования:
   ```go
