@@ -102,7 +102,7 @@ weight: 70
 | service.settings | Получить `settings` услуги
 | service.set_settings({  &apos;foo&apos; => 1 }) | Сохранить в `settings` услуги произвольные данные
 | service.withdraw. | [Ссылка]({{< ref "#списания" >}}) на объект списания
-| service.create_for_api( &apos;service_id&apos;, N ) | Регистрирует услугу клиенту с идентификатором N
+| service.create_for_api( &apos;service_id&apos;, N, &apos;check_allow_to_order&apos;,1 ) | Регистрирует услугу клиенту с идентификатором N
 | service.list_for_api() | Получение списка услуг из каталога
 
 ### Платежи
