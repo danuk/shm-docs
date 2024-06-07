@@ -40,8 +40,8 @@ params:
   github_repo: https://github.com/danuk/shm-docs
   github_project_repo: https://github.com/danuk/shm
   github_branch: master
-  algolia_docsearch: true
-  offlineSearch: false
+  algolia_docsearch: false
+  offlineSearch: true
   prism_syntax_highlighting: true
   ui:
     breadcrumb_disable: false
