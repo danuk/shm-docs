@@ -172,9 +172,9 @@ weight: 70
 ### Хранилище
 | Метод | Описание |
 |:------|----------|
-| storage.save( NAME, DATA ) | Сохранить данные DATA в хранилище с ключем NAME
-| storage.load( NAME ) | Получить данные из хранилища с ключем NAME
-| storage.del( NAME ) | Удалить данные из хранилища с ключем NAME
+| storage.save( NAME, DATA ) | Сохранить данные DATA в хранилище с ключом NAME
+| storage.load( NAME ) | Получить данные из хранилища с ключом NAME
+| storage.del( NAME ) | Удалить данные из хранилища с ключом NAME
 | storage.list_for_api() | Получение списка данных
 
 ### Конфигурация

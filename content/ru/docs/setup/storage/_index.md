@@ -38,7 +38,7 @@ weight: 80
 ## Примеры
 ### Сохранение данных в хранилище
 
-Сохраним содержимое файла: `my_file.txt` в SHM с ключем `my_file` для пользователя: `user`:
+Сохраним содержимое файла: `my_file.txt` в SHM с ключом `my_file` для пользователя: `user`:
 ```bash
 curl -s -u "user:pass" \
       -X "PUT" \
@@ -47,7 +47,7 @@ curl -s -u "user:pass" \
       --data-binary @my_file.txt
 ```
 
-Сохраним JSON данные в SHM с ключем `data` для пользователя: `user`:
+Сохраним JSON данные в SHM с ключом `data` для пользователя: `user`:
 ```bash
 curl -s -u "user:pass" \
       -X "PUT" \
