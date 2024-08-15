@@ -93,6 +93,15 @@ weight: 10
     </td>
 </tr>
 <tr>
+    <td>pay_always</td>
+    <td align="center">Integer</td>
+    <td align="center">Нет</td>
+    <td align="center">-</td>
+    <td>
+        Установите 1, для установки флага: "Всегда платная услуга"
+    </td>
+</tr>
+<tr>
     <td>config</td>
     <td align="center">JSON</td>
     <td align="center">Нет</td>
