@@ -6,8 +6,8 @@ weight: 3
 
 ## Настройка платежной системы FreeKassa
 
-* Зарегистрируйтесь в сервисе FreeKassa  (https://freekassa.ru/)
-* Откройте страницу "Настройки" (https://merchant.freekassa.ru/settings)
+* Зарегистрируйтесь в сервисе FreeKassa  (https://freekassa.com/)
+* Откройте страницу "Настройки" (https://merchant.freekassa.com/settings)
 * Сохраните в [конфиг]({{< ref "/docs/api/config" >}}) SHM следующие данные:
 ```yaml
 {
