@@ -152,12 +152,24 @@ https://t.me/myshm_bot?start={{ toBase64Url(toQueryString(
   "shmServiceOrder": {
       "service_id": "{{ args.0 }}",
       "parent": 123,
+      "check_exists": 1,
+      "check_exists_unpaid": 1,
+      "check_category": "test-%",
       "callback_data": "/menu",
       "cb_not_enough_money": "/pay",
       "error": "ОШИБКА"
    }
    ```
-   где: `service_id` - ID услуги, `parent` - ID родительской услуги (опционально), `callback_data` - команда для случая успешного заказа услуги, `cb_not_enough_money` - команда для случая нехватки средств для активации услуги.
+   где: `service_id` - ID услуги,
+    `parent` - ID родительской услуги (опционально),
+    `check_exists` - проверка существования услуги (опционально),
+    `check_exists_unpaid` - проверка существования неоплаченной услуги (опционально),
+    `check_category` - проверка существования услуги по категории (опционально),
+    `callback_data` - команда для случая успешного заказа услуги,
+    `cb_not_enough_money` - команда для случая нехватки средств для активации услуги.
+
+>   Если используется один из флагов: `check_exists`, `check_exists_unpaid`, `check_category` и услуга найдена,
+    то регистрация новой услуги не осуществляется, а метод вернет первую найденную услугу (`callback_data` или `cb_not_enough_money`).
 
 - `shmServiceDelete` - метод для удаления услуг пользователя. Пример использования:
   ```go
@@ -259,8 +271,5 @@ SHM автоматически авторизует пользователя.
 {{ END }}
 ```
 
-
-
-
-
+Привяжите этот шаблон к нужным Вам событиями.
 
