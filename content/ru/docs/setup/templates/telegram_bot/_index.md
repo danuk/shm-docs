@@ -139,7 +139,8 @@ https://t.me/myshm_bot?start={{ toBase64Url(toQueryString(
 
 
 ### Встроенные методы SHM
-- `shmRegister` - метод позволяет зарегистрировать нового клиента
+#### `shmRegister`
+Метод позволяет зарегистрировать нового клиента
   ```go
   "shmRegister": {
       "callback_data": "/menu",
@@ -147,10 +148,12 @@ https://t.me/myshm_bot?start={{ toBase64Url(toQueryString(
   }
   ```
 
-- `shmServiceOrder` - метод для регистрации новых услуг. Пример использования:
+#### `shmServiceOrder`
+Метод для регистрации новых услуг. Пример использования:
   ```go
   "shmServiceOrder": {
       "service_id": "{{ args.0 }}",
+      "expire": "2014-09-25 10:11:12",
       "parent": 123,
       "check_exists": 1,
       "check_exists_unpaid": 1,
@@ -161,6 +164,7 @@ https://t.me/myshm_bot?start={{ toBase64Url(toQueryString(
    }
    ```
    где: `service_id` - ID услуги,
+    `expire` - установка произвольной даты истечения услуги (опционально),
     `parent` - ID родительской услуги (опционально),
     `check_exists` - проверка существования услуги (опционально),
     `check_exists_unpaid` - проверка существования неоплаченной услуги (опционально),
@@ -171,7 +175,8 @@ https://t.me/myshm_bot?start={{ toBase64Url(toQueryString(
 >   Если используется один из флагов: `check_exists`, `check_exists_unpaid`, `check_category` и услуга найдена,
     то регистрация новой услуги не осуществляется, а метод вернет первую найденную услугу (`callback_data` или `cb_not_enough_money`).
 
-- `shmServiceDelete` - метод для удаления услуг пользователя. Пример использования:
+#### `shmServiceDelete`
+Метод для удаления услуг пользователя. Пример использования:
   ```go
   "shmServiceDelete": {
       "usi": "{{ args.0 }}",
@@ -181,7 +186,8 @@ https://t.me/myshm_bot?start={{ toBase64Url(toQueryString(
    ```
    где: `usi` - ID услуги пользователя
 
-- `uploadDocumentFromStorage` - метод загружает данные из Storage и отправляет их в виде файла
+#### `uploadDocumentFromStorage`
+Метод загружает данные из Storage и отправляет их в виде файла
   ```go
   "uploadDocumentFromStorage": {
       "name": "{{ args.0 }}",
@@ -189,11 +195,20 @@ https://t.me/myshm_bot?start={{ toBase64Url(toQueryString(
   }
   ```
 
-- `uploadPhotoFromStorage` - метод загружает данные из Storage и отправляет их в виде картинки (QR code)
+#### `uploadPhotoFromStorage`
+Метод загружает данные из Storage и отправляет их в виде картинки (QR code)
   ```go
   "uploadPhotoFromStorage": {
       "name": "{{ args.0 }}",
       "format": "qr_code_png"
+  }
+  ```
+
+#### `shmRedirectCallback`
+Метод вызывает указанную команду (`cmd`)
+  ```go
+  "shmRedirectCallback": {
+      "callback_data": "/help"
   }
   ```
 
