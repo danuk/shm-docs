@@ -54,7 +54,7 @@ promo.apply( ПРОМОКОД )
 Запишем туда следующий код:
 ```go
 {{ IF user.switch( request.params.uid ).id }}
-    {{ IF promo.apply( request.param.code ) }}
+    {{ IF promo.apply( request.params.code ) }}
         Ваш промокод успешно применен
     {{ ELSE }}
         Ошибка: промокод не найден
