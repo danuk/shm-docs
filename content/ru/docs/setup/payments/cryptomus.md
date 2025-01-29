@@ -1,9 +1,7 @@
 
 ---
 title: Cryptomus
-weight: 100
-toc_hide: true
-hide_summary: true
+weight: 1
 ---
 
 Сервис позволяет принимать крипто-валюту от ваших клиентов.
