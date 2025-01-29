@@ -12,7 +12,7 @@ weight: 1
 ```yaml
 {
   "pay_systems": {
-    "aaio": {
+    "tbank": {
       "name": "отабражаемое_имя_платежный_системы_(T-Bank)",
       "terminal_key": "TerminalKey_из_настроек_магазина",
       "password": "из_настроек_магазина_пароль",
