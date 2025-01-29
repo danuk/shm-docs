@@ -47,7 +47,6 @@ weight: 1
     vat120 — НДС чека по расчетной ставке 20/120.
 
 *Изменения вступают в силу с 01.01.2025.
-"
 
 #### "taxation" это - Система налогообложения. Возможные значения:
 
@@ -87,5 +86,5 @@ weight: 1
 
 ### Пример ссылки для создания платежа:
 
-`https://admin.ВАШ_ДОМЕН/shm/pay_systems/aaio.cgi?action=create&amount=123&user_id=123`
+`https://admin.ВАШ_ДОМЕН/shm/pay_systems/tbank.cgi?action=create&amount=123&user_id=123`
 
