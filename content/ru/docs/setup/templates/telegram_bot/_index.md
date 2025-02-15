@@ -29,47 +29,43 @@ hide_summary: false
 ```go
 <% SWITCH cmd %>
 <% CASE 'USER_NOT_FOUND' %>
-{
-    "shmRegister": {
-        "callback_data": "/menu",
-        "error": "ОШИБКА"
-    }
-}
+{{ tg_api( shmRegister = { callback_data = "/menu" } ) }}
 <% CASE ['/start', '/menu'] %>
-{
-    "sendMessage": {
-        "text": "Я Ваш тестовый Telegram Bot",
-        "reply_markup": {
-            "inline_keyboard": [
+{{ tg_api( sendMessage = {
+        text = "Я Ваш тестовый Telegram Bot"
+        reply_markup = {
+            inline_keyboard = [
                 [
                     {
-                        "text": "Баланс",
-                        "callback_data": "/balance"
+                        text = "Баланс"
+                        callback_data = "/balance"
                     }
                 ]
             ]
         }
     }
-}
+)
+}}
 <% CASE '/balance' %>
-{
-    "deleteMessage": { "message_id": {{ message.message_id }} }
-},
-{
-    "sendMessage": {
-        "text": "Баланс: {{ user.balance }}",
-        "reply_markup": {
-            "inline_keyboard": [
+{{ tg_api( deleteMessage = { message_id = message.message_id } ) }}
+{{ tg_api( sendMessage = {
+        text = "Баланс: " _ user.balance
+        reply_markup = {
+            inline_keyboard = [
                 [
                     {
-                        "text": "Назад",
-                        "callback_data": "/menu"
+                        text = "Назад"
+                        callback_data = "/menu"
                     }
                 ]
             ]
         }
     }
-}
+)
+}}
+<% CASE %>
+{{ tg_api( sendMessage = { text = 'Я не знаю команды: ' _  cmd  } ) }}
+<% END %>
 ```
 
 ### Стандартные методы Telegram
