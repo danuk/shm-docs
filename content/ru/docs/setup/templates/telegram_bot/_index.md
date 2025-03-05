@@ -215,7 +215,8 @@ https://t.me/myshm_bot?start={{ toBase64Url(toQueryString(
 Шаблон используется для возможности ввода произвольной суммы и выбора настроенных платежных систем SHM.
 
 1. [Настройте]({{< ref "/docs/setup/payments" >}}) одну или несколько платежных систем
-2. [Скачайте шаблон](https://raw.githubusercontent.com/danuk/shm-templates/main/telegram_bot/tg_payments.tmpl) и сохраните в SHM под названием `tg_payments`
+2. [Скачайте шаблон](https://raw.githubusercontent.com/danuk/shm-templates/main/telegram_bot/tg_payments_webapp.tmpl) и сохраните в SHM под названием `tg_payments_webapp`
+> Необходимо прописать в settings шаблона `tg_payments_webapp` параметр: allow_public: true
 3. В Шаблоне своего бота используйте конструкцию вида:
 ```go
 <% CASE '/payment' %>
@@ -228,7 +229,7 @@ https://t.me/myshm_bot?start={{ toBase64Url(toQueryString(
           {
             "text": "Оплатить...",
             "web_app": {
-              "url": "{{ config.api.url }}/shm/v1/template/tg_payments?format=html&session_id={{ user.gen_session.id }}"
+              "url": "{{ config.api.url }}/shm/v1/public/tg_payments?format=html&user_id={{ user.id }}"
             }
           }
         ]
