@@ -229,7 +229,7 @@ https://t.me/myshm_bot?start={{ toBase64Url(toQueryString(
           {
             "text": "Оплатить...",
             "web_app": {
-              "url": "{{ config.api.url }}/shm/v1/public/tg_payments?format=html&user_id={{ user.id }}"
+              "url": "{{ config.api.url }}/shm/v1/public/tg_payments_webapp?format=html&user_id={{ user.id }}"
             }
           }
         ]
