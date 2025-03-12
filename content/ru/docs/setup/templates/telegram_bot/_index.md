@@ -20,9 +20,9 @@ hide_summary: false
 В каждой секции мы можем писать реальные команды Telegram. Например, команда `sendMessage` отправляет сообщение в Telegram.
 Вы можете использовать эту команду в соответсвии с [документацией](https://core.telegram.org/bots/api#sendmessage) Telegram.
 
-В каждой секции можно писать множество команд, через запятую (см. пример в секции `/balance`).
+Для отправки команд в API Telegram используйте метод `tg_api`.
 
-Для того, чтобы лучше понять, как строятся всевозможные кнопочки, читайте документацию Telegram. В этом шаблоне всего-лишь описаны вызовы этих методов.
+Для того, чтобы лучше понять, как строятся всевозможные [кнопочки](https://handbook.tmat.me/ru/messages/buttons), читайте документацию Telegram. В этом шаблоне всего-лишь описаны вызовы этих методов.
 
 Пример шаблона:
 
@@ -215,72 +215,28 @@ https://t.me/myshm_bot?start={{ toBase64Url(toQueryString(
 Шаблон используется для возможности ввода произвольной суммы и выбора настроенных платежных систем SHM.
 
 1. [Настройте]({{< ref "/docs/setup/payments" >}}) одну или несколько платежных систем
-2. [Скачайте шаблон](https://raw.githubusercontent.com/danuk/shm-templates/main/telegram_bot/tg_payments.tmpl) и сохраните в SHM под названием `tg_payments`
+2. [Скачайте шаблон](https://raw.githubusercontent.com/danuk/shm-templates/main/telegram_bot/tg_payments_webapp.tmpl) и сохраните в SHM под названием `tg_payments_webapp`
 3. В Шаблоне своего бота используйте конструкцию вида:
 ```go
 <% CASE '/payment' %>
-{
-  "sendMessage": {
-    "text": "Оплата покупки",
-    "reply_markup": {
-      "inline_keyboard": [
-        [
-          {
-            "text": "Оплатить...",
-            "web_app": {
-              "url": "{{ config.api.url }}/shm/v1/template/tg_payments?format=html&session_id={{ user.gen_session.id }}"
-            }
-          }
-        ]
+{{ tg_payment_webapp="{{config.api.url}}/shm/v1/public/tg_payment_webapp?format=html&user_id={{user.id}}&profile={{tpl.id}}" }}
+{{ tg_api(
+  sendMessage = {
+    text = "Оплата покупки",
+    reply_markup = {
+      inline_keyboard = [
+        [{
+          text = "Оплатить..."
+          web_app = { url = tg_payment_webapp }
+        }]
       ]
     }
   }
-}
+)
+}}
 ```
 
-## Авторизация пользователей
-
-SHM автоматически авторизует пользователя.
-Для связки пользователя SHM и пользователя Telegram используется `user_id` из Telegram.
-
-#### Для отправки сообщений пользователю в Telegram необходимо знать:
-- user_id - идентификатор пользователя Telegram
-- chat_id - идентификатор чата Telegram
-
-Если пользователь хоть раз взаимодействовал с ботом, подключенным к SHM, то его `user_id` и `chat_id` автоматически сохраняются в `settings` пользователя.
-
-#### `chat_id` определяется в следующем порядке:
-- Из сообщения Telegram (в случае, если клиент отправил команду боту)
-- Из `settings` шаблона (`telegram.chat_id`)
-- Из `settings` пользователя SHM (`telegram.chat_id`)
 
 
-## Отправка системных сообщений
 
-В случае, если Вы хотите отправлять системные сообщения себе в телеграм, то для этого Вы можете создать отдельный
-шаблон, и в его settings прописать:
-```go
-{
-    "telegram": {
-        "chat_id": ID_вашего_чата
-    }
-}
-```
-
-Пример шаблона:
-```go
-Событие:  {{ event_name }}
-
-Пользователь: {{ user.login }} ({{ user.id }})
-
-{{ IF us.id }}
-Услуга: [{{ us.id }}] {{ us.name }}
-{{ END }}
-
-{{ IF event_name == "PAYMENT" }}
-Платеж на сумму: {{ user.pays.last.money }} зачислен для пользователя: {{ user.login }}
-{{ END }}
-```
-
-Привяжите этот шаблон к нужным Вам событиями.
 

@@ -10,7 +10,7 @@ hide_summary: false
 
 ```go
 {{ sum = 0 }}
-{{ arr = ref(user.pays.list_for_api( 'admin', 1, 'limit', 0,  'filter', { 'date' => '2024-01-%'} )) }}
+{{ arr = user.pays.filter( date = '2024-01-%' ).items }}
 {{ FOR item IN arr }}
 {{ sum = sum + item.money }}
 {{ END }}

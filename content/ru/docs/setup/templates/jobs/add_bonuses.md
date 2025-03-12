@@ -13,10 +13,11 @@ hide_summary: false
 Следующий код начислит всем клиентам с активной услугой 5 по 100 бонусов:
 
 ```go
-{{ arr = ref(user.services.list_for_api( 'admin',1, 'limit',0, 'filter',{ 'service_id' => 5, 'status' => 'ACTIVE' } )) }}
-{{ FOR item IN arr }}
-{{ user = user.switch( item.user_id ) }}
-{{ user.add_bonus( 100, 'Акция' ) }}
+{{ FOR u IN user.items }}
+{{ us_list = u.us.filter( service_id = 5, status = 'ACTIVE' ).items }}
+{{ IF us_list.size }}
+{{ u.add_bonus( 100, 'Акция' ) }}
+{{ END }}
 {{ END }}
 ```
 

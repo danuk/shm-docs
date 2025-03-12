@@ -16,8 +16,8 @@ hide_summary: false
 
 ```go
 {{ FOR u IN user.items }}
-    {{ FOR us IN ref(u.us.items) }}
-        {{ us.set(next = us.id) }}
+    {{ FOR us IN u.us.items }}
+        {{ us.set(next = us.service_id) }}
     {{ END }}
 {{ END }}
 ```
@@ -28,7 +28,7 @@ hide_summary: false
 
 ```go
 {{ FOR u IN user.items }}
-    {{ FOR us IN ref(u.us.filter( service_id = 5 ).items) }}
+    {{ FOR us IN u.us.filter( service_id = 5 ).items }}
         {{ us.set(next = 6) }}
     {{ END }}
 {{ END }}
