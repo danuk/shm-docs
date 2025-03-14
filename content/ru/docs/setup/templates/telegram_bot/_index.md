@@ -219,7 +219,7 @@ https://t.me/myshm_bot?start={{ toBase64Url(toQueryString(
 3. В Шаблоне своего бота используйте конструкцию вида:
 ```go
 <% CASE '/payment' %>
-{{ tg_payment_webapp="{{config.api.url}}/shm/v1/public/tg_payment_webapp?format=html&user_id={{user.id}}&profile={{tpl.id}}" }}
+{{ tg_payment_webapp="$config.api.url/shm/v1/public/tg_payment_webapp?format=html&user_id=$user.id&profile=$tpl.id" }}
 {{ tg_api(
   sendMessage = {
     text = "Оплата покупки",
