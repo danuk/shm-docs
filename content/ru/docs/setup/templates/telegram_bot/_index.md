@@ -216,10 +216,11 @@ https://t.me/myshm_bot?start={{ toBase64Url(toQueryString(
 
 1. [Настройте]({{< ref "/docs/setup/payments" >}}) одну или несколько платежных систем
 2. [Скачайте шаблон](https://raw.githubusercontent.com/danuk/shm-templates/main/telegram_bot/tg_payments_webapp.tmpl) и сохраните в SHM под названием `tg_payments_webapp`
-3. В Шаблоне своего бота используйте конструкцию вида:
+3. Сделайте шаблон публичным: пропишите в его `settings` параметр: `allow_public: true`
+4. В Шаблоне своего бота используйте конструкцию вида:
 ```go
 <% CASE '/payment' %>
-{{ tg_payment_webapp="$config.api.url/shm/v1/public/tg_payment_webapp?format=html&user_id=$user.id&profile=$tpl.id" }}
+{{ tg_payment_webapp="$config.api.url/shm/v1/public/tg_payments_webapp?format=html&user_id=$user.id&profile=$tpl.id" }}
 {{ tg_api(
   sendMessage = {
     text = "Оплата покупки",
