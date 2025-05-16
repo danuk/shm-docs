@@ -237,7 +237,8 @@ https://t.me/myshm_bot?start={{ toBase64Url(toQueryString(
 }}
 ```
 
-
-
+#### Дополнительно можно передавать:
+- `email`, например: `&email={{ user.settings.email }}`
+- `ack_email`, например: `&ack_email=1`  - появится поле ввода email
 
 
