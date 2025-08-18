@@ -12,7 +12,7 @@ hide_summary: true
 
 > SHM не умеет конвертировать валюты, поэтому в биллинге следует установить все цены для услуг в той валюте какую указываете в `currency`
 
-```json
+```yaml
 {
   "pay_systems": {
     "heleket": {
@@ -57,20 +57,20 @@ hide_summary: true
 `https://admin.ВАШ_ДОМЕН/shm/pay_systems/heleket.cgi?action=test`
 
 - Успешный ответ:
-```json
+```yaml
 {
     "state": 0,
     "result": []
 }
 ```
 - Параметр `merchant` введён неправильно:
-```json
+```yaml
 {
     "message": "Invalid Merchant Uuid."
 }
 ```
 - Неверный `api_key`:
-```json
+```yaml
 {
     "message": "Invalid Sign."
 }
