@@ -69,7 +69,7 @@ SHM имеет встроенный модуль `forecast`, позволяющ�
 Уважаемый {{ user.full_name }}
 {{ forecast = user.pays.forecast }}
 
-{{ ap = user.make_autopayment( total ) }}
+{{ ap = user.make_autopayment( forecast.total ) }}
 {{ IF ap == 1 }}
 Выполнен автоплатеж в размере: {{ forecast.total }}.
 Ваши услуги будут продлены автоматически.
