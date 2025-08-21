@@ -25,9 +25,10 @@ weight: 300
     --password-stdin \
     cr.yandex
   ```
-- Замените Ваш файл `docker-compose.yml`. Перейдите в директорию с текущим файлом и выполните команду:
+- Замените Ваши файлы `docker-compose.yml` и `.env` Перейдите в директорию с текущим файлом и выполните команду:
   ```go
   curl -sO https://raw.githubusercontent.com/danuk/shm/master/enterprise/docker-compose.yml
+  curl -sO https://raw.githubusercontent.com/danuk/shm/master/enterprise/.env
   ```
 - Обновите Ваш SHM и перезапустите:
   ```go
