@@ -206,6 +206,8 @@ weight: 70
 | [toQueryString()]({{< ref "functions/#toquerystring" >}}) | Функция преобразования объектов в Query string
 | ref() | Функция для преобразования данных в массив
 | [list_for_api()]({{< ref "functions/#list_for_api" >}}) | Функция для получения списков данных из объекта
+| [filter()]({{< ref "docs/setup/templates/filter" >}}) | Метод для точечной выборки данных
+| [misc]({{< ref "docs/setup/templates/misc" >}}) | Вспомогательные ф-ии
 
 ## Примеры
 
