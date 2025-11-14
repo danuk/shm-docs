@@ -1,7 +1,7 @@
 
 ---
 title: Remnawave
-weight: 50
+weight: 0
 ---
 
 В данном разделе описывается процесс интеграции SHM и Remnawave.
