@@ -112,9 +112,9 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    A(Telegram client) <--> B(Telegram API) <--> C[[SHM\nВерификация secret]]:::gray
-    C -- Успех --> CS[[telegram_bot]]:::green
-    C -- Ошибка --> CE[[Ошибка\nWebhook verification failed]]:::red
+    A(Telegram client) <--> B(Telegram API) <--> C(SHM\nВерификация):::gray
+    C -- Успех --> CS(telegram_bot):::green
+    C -- Ошибка --> CE(Ошибка\nWebhook verification failed):::red
 ```
 Для работы полноценного бота нужно:
 - Выполнить шаги 1 и 2 из раздела: "Telegram уведомления" (если еще не выполнены).
