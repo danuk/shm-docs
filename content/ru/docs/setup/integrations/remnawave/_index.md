@@ -71,7 +71,7 @@ flowchart LR
 
 
  - Пример вывода ссылку на подписку в виде QR-кода внутри Telegram bot
-```
+```go
 <% CASE '/show_sub_qr' %>
 {{ subscriptionUrl = storage.read('name','vpn_remnawave_' _ args.0 ).response.subscriptionUrl }}
 {{ tg_api( printQrCode = {
