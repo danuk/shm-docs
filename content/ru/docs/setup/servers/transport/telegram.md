@@ -118,7 +118,7 @@ flowchart LR
 
     A(Telegram client) <--> B(Telegram API) <--> C(SHM\nВерификация)
     C <-- Успех --> CS(telegram_bot):::green
-    C -- Ошибка --> CE(Ошибка\nWebhook verification failed):::red
+    C -- Ошибка --> CE(Ошибка):::red -- Webhook verification failed --> B
 ```
 Для работы полноценного бота нужно:
 - Выполнить шаги 1 и 2 из раздела: "Telegram уведомления" (если еще не выполнены).
