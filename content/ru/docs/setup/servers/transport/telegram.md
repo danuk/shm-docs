@@ -108,7 +108,7 @@ flowchart LR
 ## Telegram bot
 
 - Telegram bot реализован с помощью шаблона SHM (`telegram_bot` по-умолчанию)
-- Telegram client отправляет [x-telegram-bot-api-secret-token](https://core.telegram.org/bots/api#setwebhook) в заголовке запроса SHM сравнивает его с вашим `secret` который установлке рядом с `token`
+- Telegram client отправляет [x-telegram-bot-api-secret-token](https://core.telegram.org/bots/api#setwebhook) в заголовке запроса. SHM сравнивает его с вашим `secret` который установлке рядом с `token`
 
 ```mermaid
 flowchart LR
