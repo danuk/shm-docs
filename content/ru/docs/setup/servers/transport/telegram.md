@@ -112,8 +112,12 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    A(Telegram client) <--> B(Telegram API) <--> C(SHM\nВерификация):::gray
-    C -- Успех --> CS(telegram_bot):::green
+    classDef green fill:green,color:#fff
+    classDef red fill:red,color:#fff
+    classDef gray fill:gray,color:#fff
+
+    A(Telegram client) <--> B(Telegram API) <--> C(SHM\nВерификация)
+    C <-- Успех --> CS(telegram_bot):::green
     C -- Ошибка --> CE(Ошибка\nWebhook verification failed):::red
 ```
 Для работы полноценного бота нужно:
