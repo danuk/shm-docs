@@ -107,20 +107,25 @@ flowchart LR
 
 ## Telegram bot
 
-Telegram bot реализован с помощью шаблона SHM (`telegram_bot` по-умолчанию)
+- Telegram bot реализован с помощью шаблона SHM (`telegram_bot` по-умолчанию)
+- Telegram client отправляет [x-telegram-bot-api-secret-token](https://core.telegram.org/bots/api#setwebhook) в заголовке запроса SHM сравнивает его с вашим `secret` который установлке рядом с `token`
 
 ```mermaid
 flowchart LR
-    A(Telegram client) <--> B(Telegram API) <--> С([SHM\ntelegram_bot])
+    A(Telegram client) <--> B(Telegram API) <--> C[[SHM\nВерификация secret]]:::gray
+    C -- Успех --> CS[[telegram_bot]]:::green
+    C -- Ошибка --> CE[[Ошибка\nWebhook verification failed]]:::red
 ```
 Для работы полноценного бота нужно:
 - Выполнить шаги 1 и 2 из раздела: "Telegram уведомления" (если еще не выполнены).
 - Настроить Telegram API, сообщить ему адрес, куда отправлять запросы от клиента (от бота). Для этого скачайте bash скрипт [setWebhook.sh](https://raw.githubusercontent.com/danuk/shm/master/scripts/telegram/setWebhook.sh). Перед запуском скрипта необходимо его отредактировать, укажите:
   - `token` бота
-  - HTTPS адрес SHM (например: https://domain.com)
+  - `secret` 1–256 символов. Разрешены только символы A–Z, a–z, 0–9, _ и -. Вы можете сгенерировать SECRET_TOKEN с помощью следующей команды: `openssl rand -hex 32`
+  - адрес SHM (например: domain.com)
   - имя шаблона (`telegram_bot` по-умолчанию)
 - Выполните скрипт `setWebhook.sh` на любом Linux/Unix устройстве, так же подойдет и MacOS.
 - Проверьте наличие шаблона для бота (`telegram_bot` по-умолчанию). Внесите в него изменения по своему усмотрению.
+- Пропишите `secret` в [конфигурацию](https://docs.myshm.ru/docs/setup/servers/transport/telegram/#%D0%BF%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D0%B8-telegram-%D0%B2-shm) SHM обратите внимание на название шаблона, по умолчанию `telegram_bot`
 - Зайдите в своего бота в клиенте Telegram и выполните команду: `/start`. Если всё настроено верно, вы увидите приветствие.
 
 >> По-умолчанию SHM определяет профиль для бота по имени шаблона. Если нужно использовать другой профиль, то это можно указать в скрипте `setWebhook.sh`, добавив после имени шаблона параметр: `tg_profile`, например: `telegram_bot?tg_profile=profile1`
