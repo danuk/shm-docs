@@ -129,7 +129,7 @@ flowchart LR
   - имя шаблона (`telegram_bot` по-умолчанию)
 - Выполните скрипт `setWebhook.sh` на любом Linux/Unix устройстве, так же подойдет и MacOS.
 - Проверьте наличие шаблона для бота (`telegram_bot` по-умолчанию). Внесите в него изменения по своему усмотрению.
-- Пропишите `secret` в [конфигурацию](https://docs.myshm.ru/docs/setup/servers/transport/telegram/#%D0%BF%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D0%B8-telegram-%D0%B2-shm) SHM обратите внимание на название шаблона, по умолчанию `telegram_bot`
+- Пропишите `secret` в [конфигурацию](https://docs.myshm.ru/docs/setup/servers/transport/telegram/#%D0%BF%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D0%B8-telegram-%D0%B2-shm) SHM, обратите внимание на название шаблона, по умолчанию `telegram_bot`
 - Зайдите в своего бота в клиенте Telegram и выполните команду: `/start`. Если всё настроено верно, вы увидите приветствие.
 
 >> По-умолчанию SHM определяет профиль для бота по имени шаблона. Если нужно использовать другой профиль, то это можно указать в скрипте `setWebhook.sh`, добавив после имени шаблона параметр: `tg_profile`, например: `telegram_bot?tg_profile=profile1`
