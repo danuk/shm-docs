@@ -13,10 +13,10 @@ hide_summary: true
 
 #### Пример 1:
 
-Смотрим, что вернет метод `user.list_for_api`:
+Смотрим, что вернет метод `user.items`:
 
 ```go
-{{ toJson( user.list_for_api ) }}
+{{ toJson( user.items ) }}
 ```
 
 #### Результат:
@@ -77,7 +77,7 @@ a=1&b=2&c=hello%20world
 ```
 
 
-## `list_for_api()`
+## `list_for_api()` УСТАРЕЛ. Используйте метод items()
 
 Метод для получения списка данных объекта.
 
@@ -97,7 +97,7 @@ a=1&b=2&c=hello%20world
 
 Выведем всех пользователей:
 ```go
-{{ arr = ref(user.list_for_api('admin', 1)) }}
+{{ arr = user.items }}
 {{ FOR item IN arr }}
 User id: {{ item.user_id }}, Login: {{ item.login }}, Balance: {{ item.balance }}
 {{ END }}
@@ -116,7 +116,7 @@ User id: 117, Login: xims, Balance: 200
 
 Выведем список всех услуг с категорией начинающиеся на `web`, и период которых равен 1 месяцу:
 ```go
-{{ arr = ref(service.list_for_api('filter', { 'category' => 'web%', period => 1 } )) }}
+{{ arr = service.filter( category = 'web%', period => 1 ).items }}
 {{ FOR item IN arr }}
 Service id: {{ item.service_id }}, Name: {{ item.name }}, Cost: {{ item.cost }}
 {{ END }}
@@ -141,29 +141,13 @@ Service id: 5, Name: Web хостинг LITE, Cost: 0
 
 Сортировка на уровне запросов осуществляется непосредственно в БД.
 
-#### Пример выдачи результатов отсортированных по возрастанию:
-```go
-{{ arr = ref(service.list_for_api('sort_direction','asc')) }}
-```
-
 #### Пример выдачи результатов отсортированных по возрастанию по полю `name`:
 ```go
-{{ arr = ref(service.list_for_api('sort_direction','asc', 'sort_field','name')) }}
+{{ arr = service.sort('name').items }}
 ```
 
-#### Сортировка в шаблонах
-
-Сортировка в шаблонах используется для сортировки полученных данных.
-
-Для сортировки используете функции: `sort` (для алфавитной сортировки), `nsort` (для числовой сортировки) и `reverse` (обратный порядок данных).
-
-#### Пример сортировки по полю `category`:
+#### Пример выдачи результатов отсортированных по убыванию по полю `name`:
 ```go
-{{ arr = ref(service.list_for_api().sort('cateogry')) }}
-```
-
-#### Пример сортировки по полю `cost`, в убывающем порядке:
-```go
-{{ arr = ref(service.list_for_api().nsort('cost').reverse) }}
+{{ arr = service.rsort('name').items }}
 ```
 

@@ -18,7 +18,7 @@ hide_summary: false
 <% CASE '/list' %>
 {{
   offset = args.0 || 0
-  items = ref( user.services.list_for_api('limit',limit, 'offset',offset) )
+  items = user.services.limit( limit, offset ).items;
 }}
 {{ FOR item IN items }}
 {{ data.push(

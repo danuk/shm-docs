@@ -9,7 +9,7 @@ hide_summary: false
 #### Пример шаблона (`my_template`) для формирования данных в HTML:
 ```go
 <table border=1>
-{{ FOR u IN ref( user.list_for_api('admin',1,'limit',0)) }}
+{{ FOR u IN user.items }}
 <tr>
     <td>{{ u.user_id }}</td>
     <td>{{ u.login }}</td>
