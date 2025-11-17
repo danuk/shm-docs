@@ -12,13 +12,13 @@ hide_summary: false
 ```go
 {{ u = user.id( request.params.uid ) }}
 {{
-  toJson({
+  toJson(
     user_id = u.id
     login = u.login
     balance = u.balance
     last_payment = u.pays.last
     forecast = u.pays.forecast.total
-  })
+  )
 }}
 ```
 
