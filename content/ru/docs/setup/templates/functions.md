@@ -16,7 +16,7 @@ hide_summary: true
 Смотрим, что вернет метод `user.items`:
 
 ```go
-{{ toJson( user.items ) }}
+{{ toJson( user.items.first ) }}
 ```
 
 #### Результат:
