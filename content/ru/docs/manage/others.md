@@ -19,6 +19,13 @@ description: >-
 1. Перейдите в директорию с Вашим файлом: `docker-compose.yml`
 2. Выполните команду: `docker compose exec core scripts/reset_admin_pass.cgi`
 
+## Разрешить вход по паролю
+
+Если Вы потеряли доступ к Passkey, то можно его сбросить следующим образом:
+
+1. Перейдите в директорию с Вашим файлом: `docker-compose.yml`
+2. Выполните команду: `docker compose exec core scripts/enable_password_auth.cgi`
+
 ## Редактирование стилей (CSS) клиентского кабинета
 
 1. Перейдите в директорию с Вашим файлом: `docker-compose.yml`
