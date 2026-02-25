@@ -74,6 +74,41 @@ hide_summary: true
 {{ misc.add_date_time("2025-01-01 00:00:00", { month = 1, day = 15 }) }}
 ```
 
+### `add_period(date, period)`
+
+Добавляет период к дате, используя компактный формат записи.
+
+**Параметры:**
+- `date` — исходная дата в формате `"YYYY-MM-DD HH:MM:SS"`
+- `period` — строка вида `"<число><единица>"`, где единица:
+  - `d` — дни
+  - `m` — месяцы
+  - `y` — годы
+  - `H` — часы
+  - `M` — минуты
+
+**Возвращает:** новую дату в формате `"YYYY-MM-DD HH:MM:SS"`, или исходную дату если формат периода не распознан.
+
+**Синтаксис:**
+```
+{{ misc.add_period(misc.now, "7d") }}
+{{ misc.add_period(misc.now, "1m") }}
+{{ misc.add_period(misc.now, "1y") }}
+{{ misc.add_period(misc.now, "12H") }}
+{{ misc.add_period(misc.now, "30M") }}
+```
+
+**Примеры:**
+```
+Через неделю: {{ misc.add_period(misc.now, "7d") }}
+Через месяц: {{ misc.add_period(misc.now, "1m") }}
+Через год:   {{ misc.add_period(misc.now, "1y") }}
+
+{{# Удобно для вычисления дат окончания подписки #}}
+{{ SET expire = misc.add_period(service.created, "1m") }}
+Действует до: {{ expire }}
+```
+
 ### `start_of_month(date)`
 Возвращает начало месяца для указанной даты.
 
