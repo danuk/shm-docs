@@ -357,7 +357,9 @@ hide_summary: true
 
 {{# Для конкретного IP #}}
 {{ IF misc.ip_rate_limit("upload", "3/60", { ip = user.ip }) }}
-  Лимит загрузок исчерпан
+    {{ r = report.status(429) }}
+    {{ r = report.add_error('Лимит загрузок исчерпан') }}
+    {{ STOP }}
 {{ END }}
 ```
 
