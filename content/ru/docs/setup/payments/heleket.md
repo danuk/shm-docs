@@ -2,7 +2,7 @@
 ---
 title: Heleket
 weight: 1
-toc_hide: true
+toc_hide: false
 hide_summary: true
 ---
 
