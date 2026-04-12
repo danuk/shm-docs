@@ -66,6 +66,7 @@ weight: 70
 | user.pays. | [Ссылка]({{< ref "#платежи" >}}) на платежи пользователя
 | user.delete | Удаление пользователя (с нулевым балансом, без услуг)
 | user.items() | Получить всех пользователей
+| new_user = user.reg( login = 'LOGIN', password = 'PLAIN_PASSWORD', partner_id = 'USER_PARTNER_ID' ) | Регистрация нового пользователя
 
 ### Услуги пользователя
 | Метод | Описание |
