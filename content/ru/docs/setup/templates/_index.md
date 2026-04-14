@@ -208,6 +208,7 @@ weight: 70
 | ref() | Функция для преобразования данных в массив (устарела)
 | [list_for_api()]({{< ref "functions/#list_for_api" >}}) | Функция для получения списков данных из объекта (устарела)
 | [filter()]({{< ref "docs/setup/templates/filter" >}}) | Метод для точечной выборки данных (для items)
+| [report]({{< ref "report" >}}) | Управление HTTP-статусом и заголовками ответа
 | [misc]({{< ref "docs/setup/templates/misc" >}}) | Вспомогательные ф-ии
 
 ## Примеры
