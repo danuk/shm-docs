@@ -72,6 +72,7 @@ message
     from = "noreply@example.com"
     from_name = "MyService"
     subject = "Уведомление"
+    to = "client@example.com"
     content_type = "text/html"
 ) }}
 {{ r = m.send("<b>Привет!</b> Ваш аккаунт активирован.") }}
