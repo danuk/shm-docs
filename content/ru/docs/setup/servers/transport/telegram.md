@@ -157,3 +157,194 @@ flowchart LR
 
 Заполняется вручную администратором в профиле пользователя.
 
+## Telegram Login для Web (OIDC)
+
+SHM поддерживает авторизацию через Telegram Login API в методе:
+
+- `POST /shm/v1/telegram/web/auth`
+
+Метод поддерживает 3 режима:
+
+1. OIDC Code Flow (`code`, `redirect_uri`, `code_verifier`)
+2. OIDC ID Token (`id_token`)
+3. Legacy Telegram Widget (`id`, `auth_date`, `hash`)
+
+Для OIDC рекомендуется начинать с инициализации:
+
+- `GET /shm/v1/telegram/web/auth/init`
+
+Этот метод генерирует `state`, `nonce`, PKCE (`code_challenge`) и возвращает готовый `auth_url`.
+
+### Настройка профиля
+
+В конфигурации `telegram` для нужного профиля (обычно `telegram_bot`) укажите:
+
+- `token` бота (как и раньше)
+- `client_id` (из BotFather → Web Login)
+- `client_secret` (из BotFather → Web Login)
+
+Пример:
+
+```json
+{
+  "telegram_bot": {
+    "token": "123456789:AA...",
+    "secret": "webhook_secret",
+    "client_id": "123456789",
+    "client_secret": "telegram_oidc_secret"
+  }
+}
+```
+
+### Что проверяет SHM
+
+Для OIDC (`id_token`):
+
+- подпись JWT по JWKS: `https://oauth.telegram.org/.well-known/jwks.json`
+- `iss == https://oauth.telegram.org`
+- `aud == client_id` профиля
+- срок жизни токена (`exp`)
+- `nonce` (если вы его передали)
+
+Для Code Flow:
+
+- обмен `code` на `id_token` на `https://oauth.telegram.org/token`
+- затем выполняются все проверки `id_token` выше
+- если переданы `state` и `expected_state`, SHM проверяет их совпадение
+
+Для legacy widget:
+
+- проверка `hash` по `token` бота
+- проверка свежести `auth_date`
+
+### Пример 1. OIDC Code Flow (рекомендуется)
+
+Шаг 1. Получите URL авторизации у SHM:
+
+```bash
+curl 'https://example.com/shm/v1/telegram/web/auth/init?profile=telegram_bot&register_if_not_exists=1'
+```
+
+Ответ:
+
+```json
+{
+  "auth_url": "https://oauth.telegram.org/auth?...",
+  "state": "...",
+  "nonce": "...",
+  "code_challenge": "...",
+  "code_challenge_method": "S256",
+  "redirect_uri": "https://example.com/shm/v1/telegram/web/callback",
+  "expires_in": 600
+}
+```
+
+Шаг 2. Откройте `auth_url` из ответа (редиректните пользователя).
+
+Сначала отправьте пользователя на Telegram authorize endpoint:
+
+```text
+https://oauth.telegram.org/auth?client_id=123456789&redirect_uri=https%3A%2F%2Fexample.com%2Fshm%2Fv1%2Ftelegram%2Fweb%2Fcallback&response_type=code&scope=openid%20profile&state=RANDOM_STATE&code_challenge=PKCE_CHALLENGE&code_challenge_method=S256
+```
+
+Вы можете указывать `redirect_uri` сразу на метод SHM:
+
+- `GET /shm/v1/telegram/web/callback`
+
+Этот метод в `v1` принимает `code` от Telegram и выполняет обмен на `id_token` внутри SHM.
+
+Шаг 3. После редиректа Telegram на callback SHM автоматически использует сохраненный `code_verifier` по `state`.
+
+Дополнительный backend-вызов не обязателен, но остается доступным:
+
+```bash
+curl -X POST 'https://example.com/shm/v1/telegram/web/auth' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "profile": "telegram_bot",
+    "code": "AUTH_CODE",
+    "redirect_uri": "https://example.com/auth/telegram/callback",
+    "code_verifier": "PKCE_CODE_VERIFIER",
+    "state": "RANDOM_STATE",
+    "expected_state": "RANDOM_STATE",
+    "register_if_not_exists": 1
+  }'
+```
+
+Либо можно не делать дополнительный backend-вызов, если используете callback endpoint напрямую:
+
+`https://example.com/shm/v1/telegram/web/callback?profile=telegram_bot&register_if_not_exists=1&expected_state=RANDOM_STATE&code_verifier=PKCE_CODE_VERIFIER`
+
+Если вы используете `auth/init`, параметры `expected_state` и `code_verifier` можно не передавать: SHM возьмет их из кэша по `state`.
+
+Ответ при успехе:
+
+```json
+{
+  "session_id": "..."
+}
+```
+
+### Пример 2. OIDC через id_token
+
+Если ваш frontend уже получил `id_token`, передайте его напрямую:
+
+```bash
+curl -X POST 'https://example.com/shm/v1/telegram/web/auth' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "profile": "telegram_bot",
+    "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6I...",
+    "nonce": "SERVER_NONCE",
+    "register_if_not_exists": 1
+  }'
+```
+
+### Пример 3. Legacy Telegram Widget
+
+Старый формат также поддерживается:
+
+```bash
+curl -X POST 'https://example.com/shm/v1/telegram/web/auth' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "profile": "telegram_bot",
+    "id": "298002190",
+    "first_name": "John",
+    "last_name": "Smith",
+    "username": "johnsmith",
+    "photo_url": "https://t.me/i/userpic/...jpg",
+    "auth_date": "1713780000",
+    "hash": "<telegram_hash>",
+    "register_if_not_exists": 1
+  }'
+```
+
+### Привязка Telegram к уже существующему пользователю
+
+Чтобы привязать Telegram к текущему пользователю SHM, передайте:
+
+- `uid` — user_id в SHM
+- `bind_to_profile` = `1`
+
+Пример:
+
+```bash
+curl -X POST 'https://example.com/shm/v1/telegram/web/auth' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "profile": "telegram_bot",
+    "uid": 123,
+    "bind_to_profile": 1,
+    "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6I..."
+  }'
+```
+
+### Рекомендации по безопасности
+
+1. Для OIDC Code Flow обязательно используйте PKCE (`code_challenge_method=S256`).
+2. Всегда проверяйте `state` на backend (`state` == `expected_state`).
+3. Используйте `nonce` и передавайте его в `/telegram/web/auth` при работе с `id_token`.
+4. Храните `client_secret` только на backend.
+5. Убедитесь, что ваш `redirect_uri` добавлен в Allowed URLs у BotFather.
+
