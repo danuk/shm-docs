@@ -107,6 +107,9 @@ weight: 70
 | service.api_price_list() | Возвращает массив услуг из каталога
 | service.settings | Получить `settings` услуги
 | service.set_settings( foo = 1 ) | Сохранить в `settings` услуги произвольные данные
+| service.is_ever_used | Проверяет, использовалась ли услуга когда-либо (включая текущие активные/блокированные/завершенные состояния)
+| service.was_previously_used | Проверяет, использовалась ли услуга ранее и сейчас удалена (`status = REMOVED`)
+| service.is_currently_used | Проверяет, используется ли услуга сейчас (любой статус, кроме `REMOVED`)
 | service.withdraw. | [Ссылка]({{< ref "#списания" >}}) на объект списания
 | service.reg( service_id = N, check_allow_to_order = 1 ) | Регистрирует услугу клиенту с идентификатором N
 | service.items() | Получение списка услуг из каталога
