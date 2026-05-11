@@ -9,9 +9,8 @@ hide_summary: true
 
 SHM имеет встроенный модуль `paysystems`, позволяющий получать список доступных платежных систем.
 
-
 #### Получить список платежных систем можно:
-- Через Web: `/shm/v1/user/pay/paysystems`
+- Через API: `/shm/v1/user/pay/paysystems`
 - Из шаблонов: `pay.paysystems( АРГУМЕНТЫ )`
 
 ###  Аргументы
