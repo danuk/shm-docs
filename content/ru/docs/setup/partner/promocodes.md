@@ -25,8 +25,8 @@ weight: 20
       length = 10
       prefix = 'TEST_'
       quantity = 1
-      reusable = true
-      status = true
+      reusable = 1
+      status = 1
       amount = 123, tariff = 1, foo = 'bar'
     }
   )
