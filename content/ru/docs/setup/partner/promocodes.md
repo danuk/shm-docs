@@ -18,7 +18,7 @@ weight: 20
 Создайте и выполните этот шаблон для генерации промокодов:
 ```go
 {{
-  codes = promo.generate(
+  codes = user.promo.generate(
     template_id = 'template_promo'
     settings = {
       count = 1
@@ -53,7 +53,7 @@ weight: 20
 
 Для того, чтобы использовать промокод необходимо выполнить следующий код:
 ```go
-promo.apply( ПРОМОКОД )
+user.promo.apply( ПРОМОКОД )
 ```
 
 ### Использование промокодов с помощью внешней ссылки
@@ -62,8 +62,9 @@ promo.apply( ПРОМОКОД )
 
 Запишем туда следующий код:
 ```go
-{{ IF user.switch( request.params.uid ).id }}
-    {{ IF promo.apply( request.params.code ) }}
+{{ user = user.id( request.params.uid ) }}
+{{ IF user }}
+    {{ IF user.promo.apply( request.params.code ) }}
         Ваш промокод успешно применен
     {{ ELSE }}
         Ошибка: промокод не найден
