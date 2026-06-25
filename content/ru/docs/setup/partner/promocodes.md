@@ -101,7 +101,7 @@ https://myshm.ru/shm/v1/public/my_promo?uid=123&code=XXXXXX
 
 ```go
 {{
-  service.reg(
+  user.service.reg(
     service_id = promo.settings.tariff
     check_allow_to_order = 0
   )
