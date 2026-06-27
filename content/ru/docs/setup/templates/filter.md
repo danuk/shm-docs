@@ -408,6 +408,18 @@ hide_summary: true
 {{ END }}
 ```
 
+```
+{{ FOR u IN user.filter(settings = { notifications = isTrue }).items }}
+  Пользователь {{ u.login }} где notifications = true или 1
+{{ END }}
+```
+
+```
+{{ FOR u IN user.filter(settings = { archived = isFalse }).items }}
+  Пользователь {{ u.login }} где archived = false или 0
+{{ END }}
+```
+
 ## Практические примеры синтаксиса
 
 ### Сравнение различных подходов
@@ -445,6 +457,14 @@ hide_summary: true
 # Числовая запись (также работает)
 {{ FOR u IN user.filter( enabled = 1 ).items }}
 {{ FOR u IN user.filter( deleted = 0 ).items }}
+
+# Специальные флаги для обычных полей
+{{ FOR u IN user.filter( enabled = isTrue ).items }}
+{{ FOR u IN user.filter( deleted = isFalse ).items }}
+
+# Для JSON полей с mixed boolean/number
+{{ FOR u IN user.filter( settings = { notifications = isTrue } ).items }}
+{{ FOR u IN user.filter( settings = { archived = isFalse } ).items }}
 ```
 
 **JSON поля:**
@@ -507,6 +527,34 @@ hide_summary: true
 ```
 {{ FOR u IN user.filter( description = isNotEmpty ).items }}
   Пользователь {{ u.login }} с описанием
+{{ END }}
+```
+
+#### `isTrue`
+Проверяет, что поле истинно. Работает для обычных и JSON полей, считает истинными значения `true` и `1`:
+```
+{{ FOR u IN user.filter( enabled = isTrue ).items }}
+  Пользователь {{ u.login }} с включенным флагом enabled
+{{ END }}
+```
+
+```
+{{ FOR u IN user.filter( settings = { notifications = isTrue } ).items }}
+  Пользователь {{ u.login }} с включенными уведомлениями
+{{ END }}
+```
+
+#### `isFalse`
+Проверяет, что поле ложно. Работает для обычных и JSON полей, считает ложными значения `false` и `0`:
+```
+{{ FOR u IN user.filter( deleted = isFalse ).items }}
+  Пользователь {{ u.login }} с выключенным флагом deleted
+{{ END }}
+```
+
+```
+{{ FOR u IN user.filter( settings = { archived = isFalse } ).items }}
+  Пользователь {{ u.login }} с выключенным флагом archived
 {{ END }}
 ```
 
