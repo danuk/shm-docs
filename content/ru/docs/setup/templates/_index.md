@@ -208,7 +208,8 @@ weight: 70
 ### Задачи
 | Метод | Описание |
 |:------|----------|
-| [task.answer( status = STATUS, msg = MESSAGE )]({{< ref "task" >}}) | Явное указание результата выполнения задачи
+| [task.answer( status = STATUS, msg = MESSAGE )]({{< ref "task#taskanswer" >}}) | Явное указание результата выполнения задачи
+| [spool.add( event = EVENT, settings = SETTINGS, prio = PRIORITY )]({{< ref "task#spooladd" >}}) | Добавление задачи в очередь выполнения
 
 ### Вспомогательные ф-ии
 | Метод | Описание |
