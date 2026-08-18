@@ -39,6 +39,17 @@ LOCAL - локальный транспорт: код выполняется н�
 ) }}
 ```
 
+Для создания событий в контексте услуги пользователя используйте [us.make_custom_event()]({{< ref "docs/setup/templates/task#usmake_custom_event" >}}):
+
+```go
+{{ result = us.make_custom_event(
+    name = 'CUSTOM_ACTION'
+    title = 'Выполнение пользовательского действия'
+    transport = 'local'
+    template_id = 'my_template'
+) }}
+```
+
 Подробнее о работе с задачами читайте в разделе [Работа с задачами]({{< ref "docs/setup/templates/task" >}}).
 
 
