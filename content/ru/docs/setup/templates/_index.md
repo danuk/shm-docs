@@ -92,6 +92,7 @@ weight: 70
 | us.top_parent. | [Ссылка]({{< ref "#услуги-пользователя" >}}) на самую верхнюю услугу пользователя
 | us.service. | [Ссылка]({{< ref "#каталог-услуг" >}}) на каталог услуг
 | us.withdraw. | [Ссылка]({{< ref "#списания" >}}) на списание услуги
+| [us.event( EVENT_NAME )]({{< ref "task#usevent" >}}) | Повторное выполнение стандартного события для услуги
 | [us.make_custom_event( name = NAME, title = TITLE, ... )]({{< ref "task#usmake_custom_event" >}}) | Создание пользовательского события для услуги
 | us.items() | Получение списка услуг пользователя
 
@@ -211,6 +212,7 @@ weight: 70
 |:------|----------|
 | [task.answer( status = STATUS, msg = MESSAGE )]({{< ref "task#taskanswer" >}}) | Явное указание результата выполнения задачи
 | [spool.add( event = EVENT, settings = SETTINGS, prio = PRIORITY )]({{< ref "task#spooladd" >}}) | Добавление задачи в очередь выполнения
+| [us.event( EVENT_NAME )]({{< ref "task#usevent" >}}) | Повторное выполнение стандартного события для услуги (см. также в разделе "Услуги пользователя")
 | [us.make_custom_event( name = NAME, title = TITLE, ... )]({{< ref "task#usmake_custom_event" >}}) | Создание пользовательского события для услуги (см. также в разделе "Услуги пользователя")
 
 ### Вспомогательные ф-ии
