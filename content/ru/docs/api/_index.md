@@ -72,6 +72,51 @@ curl --cookie "session_id=3f928c835ff78f836c4066c112b292c5" http://$SERVER/shm/v
 curl -u "admin:admin" http://$SERVER/shm/v1/user
 ```
 
+### Bearer-аутентификация (API-токен)
+
+Для интеграций и внешних сервисов удобнее не использовать логин/пароль пользователя,
+а выпустить отдельный аккаунт-токен (`type: "token"`). Токен генерируется на сервере
+и показывается в открытом виде только один раз - в ответе на создание. Дальше хранится
+только его sha256-хеш, поэтому восстановить или посмотреть токен повторно нельзя -
+при утере нужно создать новый.
+
+Создание токена (доступно только администратору):
+```go
+curl -u "admin:admin" -X PUT \
+     -H "Content-Type: application/json" \
+     -d '{"user_id": 42, "type": "token"}' \
+     http://$SERVER/shm/v1/admin/user/accounts
+```
+пример ответа:
+```go
+{
+    "data": [
+        {
+            "login": "kQ7s...64-символьный токен...9zP2",
+            "type": "token",
+            "user_id": 42,
+            "settings": {}
+        }
+    ]
+}
+```
+
+Значение `login` из ответа и есть сам токен - сохраните его, повторно он не выдаётся.
+
+Запрос с использованием токена:
+```go
+curl -H "Authorization: Bearer kQ7s...64-символьный токен...9zP2" http://$SERVER/shm/v1/user
+```
+
+При создании токена можно указать `gid` в `settings` - тогда доступ по токену
+будет ограничен, как у пользователя соответствующей группы администраторов:
+```go
+curl -u "admin:admin" -X PUT \
+     -H "Content-Type: application/json" \
+     -d '{"user_id": 42, "type": "token", "settings": {"gid": 2}}' \
+     http://$SERVER/shm/v1/admin/user/accounts
+```
+
 ### Аутентификация через header-ы
 ```go
 curl -H "session-id: 3f928c835ff78f836c4066c112b292c5" http://$SERVER/shm/v1/user
